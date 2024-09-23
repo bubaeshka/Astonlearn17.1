@@ -1,7 +1,7 @@
 package ReadingStrategy;
 
 public class FieldDescription {
-	enum FieldType {
+	public enum FieldType {
 		STRING, INT 
 	}
 	public FieldDescription(String fieldName, FieldDescription.FieldType fieldType) {
@@ -9,6 +9,6 @@ public class FieldDescription {
 		this.fieldName = fieldName;
 		this.fieldType = fieldType;
 	}
-	String fieldName;
+	public String fieldName;
 	public FieldDescription.FieldType fieldType;
 }

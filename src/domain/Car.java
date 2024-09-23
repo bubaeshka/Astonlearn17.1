@@ -1,7 +1,7 @@
 package domain;
 
 public class Car extends Thing {
-    private  int madeYear;
+    private int madeYear;
     private int power;
 
     public Car(String name) {

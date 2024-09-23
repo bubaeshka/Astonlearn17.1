@@ -2,7 +2,7 @@ package domain;
 
 public abstract class Thing implements Comparable {
 
-    private String name;
+    protected String name;
 
     public Thing(String name) {
         this.name = name;
