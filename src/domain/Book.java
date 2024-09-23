@@ -46,10 +46,6 @@ public class Book extends Thing {
         return 0;
     }
 
-    @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
-    }
 
     //сам билдер
     public static class BookBuilder {
