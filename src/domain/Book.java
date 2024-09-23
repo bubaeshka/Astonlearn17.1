@@ -79,4 +79,13 @@ public class Book extends Thing {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "names= "+ super.getName()+
+                "pages=" + pages +
+                ", author='" + author + '\'' +
+                '}';
+    }
 }
