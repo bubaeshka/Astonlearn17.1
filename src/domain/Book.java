@@ -1,15 +1,15 @@
 package domain;
 
-public class Book extends Thing {
+import java.util.Comparator;
+
+public class Book implements Comparable<Book> , Comparator {
     private int pages;
     private String author;
 
-    public Book(String name) {
-        super(name);
-    }
+    private String name;
 
     public Book(String name, int pages, String author) {
-        super(name);
+        this.name = name;
         this.pages = pages;
         this.author = author;
     }
@@ -30,13 +30,24 @@ public class Book extends Thing {
         this.author = author;
     }
 
+
+
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Book book) {
+        return (this.pages - book.pages);
     }
 
     @Override
     public int compare(Object o1, Object o2) {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "pages=" + pages +
+                ", author='" + author + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

@@ -1,15 +1,16 @@
 package domain;
 
-public class Vegetable extends Thing{
+import java.util.Comparator;
+
+public class Vegetable implements Comparable <Vegetable>, Comparator {
+    private String typeName;
     private int weight;
     private String color;
 
-    public Vegetable(String name) {
-        super(name);
-    }
 
-    public Vegetable(String name, int weight, String color) {
-        super(name);
+
+    public Vegetable(String typeName, int weight, String color) {
+        this.typeName = typeName;
         this.weight = weight;
         this.color = color;
     }
@@ -30,13 +31,23 @@ public class Vegetable extends Thing{
         this.color = color;
     }
 
+
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Vegetable vegetable) {
+        return (this.weight - vegetable.weight);
     }
 
     @Override
     public int compare(Object o1, Object o2) {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Vegetable{" +
+                "typeName='" + typeName + '\'' +
+                ", weight=" + weight +
+                ", color='" + color + '\'' +
+                '}';
     }
 }
