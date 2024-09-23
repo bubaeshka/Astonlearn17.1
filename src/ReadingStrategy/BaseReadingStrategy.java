@@ -16,6 +16,6 @@ public abstract class BaseReadingStrategy {
 	abstract public Thing createThing(String[] inputfields);
 
 	// the order of input fields SHOULD be the same as in getNeededFieds
-	abstract public void validate(String[] inputfields);
+	abstract public boolean validate(String[] inputfields);
 
 }

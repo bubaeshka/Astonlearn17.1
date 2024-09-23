@@ -2,7 +2,7 @@ package ReadingStrategy;
 
 public class FieddDescription {
 	enum FieldType {
-		TEXT, INT
+		STRING, INT 
 	}
 	public FieddDescription(String fieldName, FieddDescription.FieldType fieldType) {
 		super();
