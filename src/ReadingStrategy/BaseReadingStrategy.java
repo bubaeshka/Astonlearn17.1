@@ -10,7 +10,7 @@ import domain.Thing;
 // Fresh baked Thing object add to collection and cycle again
 public abstract class BaseReadingStrategy {
 
-	abstract public FieddDescription[] getNeededFieds();
+	abstract public FieldDescription[] getNeededFieds();
 
 	// the order of input fields SHOULD be the same as in getNeededFieds
 	abstract public Thing createThing(String[] inputfields);
