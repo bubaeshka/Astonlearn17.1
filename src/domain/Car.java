@@ -35,5 +35,8 @@ public class Car extends Thing {
         return 0;
     }
 
-
+    @Override
+    public String toString() {
+        return "Car [name=" + name + ", madeYear=" + madeYear + ", power=" + power + "]";
+    }
 }
