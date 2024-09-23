@@ -1,19 +1,24 @@
 package domain;
 
-import java.util.Comparator;
-
-public class Vegetable implements Comparable <Vegetable>, Comparator {
-    private String typeName;
+public class Vegetable extends Thing{
     private int weight;
     private String color;
 
-
-
-    public Vegetable(String typeName, int weight, String color) {
-        this.typeName = typeName;
-        this.weight = weight;
-        this.color = color;
+    public Vegetable(String name) {
+        super(name);
     }
+
+//    public Vegetable(String name, int weight, String color) {
+//        super(name);
+//        this.weight = weight;
+//        this.color = color;
+//    }
+    private Vegetable(VegetableBuilder vegetableBuilder) {
+        super(vegetableBuilder.typeName);
+        this.weight = vegetableBuilder.weight;
+        this.color = vegetableBuilder.color;
+    }
+
 
     public int getWeight() {
         return weight;
@@ -33,8 +38,8 @@ public class Vegetable implements Comparable <Vegetable>, Comparator {
 
 
     @Override
-    public int compareTo(Vegetable vegetable) {
-        return (this.weight - vegetable.weight);
+    public int compareTo(Object o) {
+        return (this.weight - ((Vegetable)o).getWeight());
     }
 
     @Override
@@ -42,12 +47,33 @@ public class Vegetable implements Comparable <Vegetable>, Comparator {
         return 0;
     }
 
+
     @Override
     public String toString() {
         return "Vegetable{" +
-                "typeName='" + typeName + '\'' +
-                ", weight=" + weight +
+                "Type=" + super.getName() +
+                "weight=" + weight +
                 ", color='" + color + '\'' +
                 '}';
+    }
+    public static class VegetableBuilder {
+        private String typeName;
+        private int weight;
+        private String color;
+
+        public VegetableBuilder(String typeName) {
+            this.typeName = typeName;
+        }
+        public VegetableBuilder setWeight(int weight) {
+            this.weight = weight;
+            return this;
+        }
+        public VegetableBuilder setColor(String color) {
+            this.color = color;
+            return this;
+        }
+        public Vegetable build() {
+            return new Vegetable(this);
+        }
     }
 }

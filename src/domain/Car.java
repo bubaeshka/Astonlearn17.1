@@ -1,17 +1,22 @@
 package domain;
 
-import java.util.Comparator;
-
-public class Car implements Comparable<Car> , Comparator {
-    private String modelName;
-    private int madeYear;
+public class Car extends Thing {
+    private  int madeYear;
     private int power;
 
+    public Car(String name) {
+        super(name);
+    }
 
-    public Car(String modelName, int madeYear, int power) {
-        this.modelName = modelName;
-        this.madeYear = madeYear;
-        this.power = power;
+//    public Car(String name, int madeYear, int power) {
+//        super(name);
+//        this.madeYear = madeYear;
+//        this.power = power;
+//    }
+    private Car(CarBuilder carBuilder){
+        super(carBuilder.nameModel);
+        this.madeYear = carBuilder.madeYear;
+        this.power = carBuilder.power;
     }
 
     public int getMadeYear() {
@@ -31,23 +36,32 @@ public class Car implements Comparable<Car> , Comparator {
     }
 
     @Override
-    public int compareTo(Car car) {
-        return (this.power - car.power);
+    public int compareTo(Object o) {
+        return (this.power-((Car)o).getPower());
     }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "modelName='" + modelName + '\'' +
-                ", madeYear=" + madeYear +
-                ", power=" + power +
-                '}';
-    }
-
-
 
     @Override
     public int compare(Object o1, Object o2) {
         return 0;
+    }
+    public static class CarBuilder{
+        private String nameModel;
+        private int madeYear;
+        private int power;
+
+        public CarBuilder(String nameModel){
+            this.nameModel = nameModel;
+        }
+        public CarBuilder setMadeYear(int madeYear){
+            this.madeYear = madeYear;
+            return this;
+        }
+        public CarBuilder setPower(int power){
+            this.power = power;
+            return this;
+        }
+        public Car build(){
+            return new Car(this);
+        }
     }
 }
