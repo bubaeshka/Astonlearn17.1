@@ -1,7 +1,7 @@
 package strartegy;
 
 
-import readingStrategy.CarReadingStrategy;
+
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -16,7 +16,7 @@ public class FileFiller implements Filler {
     //парсит полученную строку
     //получаетя три поля, для создания экземпляра
     //создаёт экземпляр и добавляет в коллекцию.И так пока не кончится массив полученых строк
-    // метод не доделан, нужно всё собрать и можно будет дальше пытатсья собрать и доделать его 
+    // метод не доделан, нужно всё собрать и можно будет дальше пытатсья собрать и доделать его
 
     @Override
     public List<?> fillCollection(String fileName, List<?> list) {
