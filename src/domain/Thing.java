@@ -1,6 +1,8 @@
 package domain;
 
-public abstract class Thing {
+import java.util.Comparator;
+
+public abstract class Thing implements Comparable , Comparator {
     private String name;
 
     public Thing(String name) {

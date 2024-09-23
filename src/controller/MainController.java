@@ -61,7 +61,7 @@ public class MainController {
         if (typeCollection.equals("Book")) {
             return list = new ArrayList<Book>();
         } else if (typeCollection.equals("Car")) {
-//            return list = new ArrayList<Car>();
+//            return list = new ArrayList<domain.Car>();
         } else if (typeCollection.equals("Root vegetable")) {
 //            return new ArrayList<Vegetable>();
         }
