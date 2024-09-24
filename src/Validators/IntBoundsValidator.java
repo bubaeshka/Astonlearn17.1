@@ -8,11 +8,11 @@ public class IntBoundsValidator extends BaseValidator {
         this.max = max;
     }
 
-    int getMin() {
+    public int getMin() {
         return min;
     }
 
-    int getMax() {
+    public int getMax() {
         return max;
     }
 

@@ -29,9 +29,17 @@ public class RandomReader extends BaseReader {
 
     String generate(FieldDescription fd) {
         if (fd.type == FieldDescription.Type.INT) {
+            if (fd.validator instanceof Validators.IntBoundsValidator) {
+                int min = ((Validators.IntBoundsValidator) fd.validator).getMin();
+                int max = ((Validators.IntBoundsValidator) fd.validator).getMax();
+                return String.valueOf(rng.nextInt(max - min + 1) + min);
+            }
             return String.valueOf((int) (Math.random() * 100));
         } else if (fd.type == FieldDescription.Type.STRING) {
-            return generateRandomString(8);
+            int maxLenth = ((Validators.StringLengthValidator) fd.validator).getMaxLength();
+            int minLenth = Math.min(maxLenth, 3);
+            int len = rng.nextInt(maxLenth - minLenth + 1) + minLenth;
+            return generateRandomString(len);
         }
         throw new IllegalArgumentException("unknown field type encountered");
     }
@@ -47,7 +55,11 @@ public class RandomReader extends BaseReader {
             for (int j = 0; j < elemCount; j++) {
                 fields[j] = generate(fds[j]);
             }
-            collection.add(strategy.createThing(fields));
+            if (!strategy.validate(fields).isValid) {
+                i--;
+                continue;
+            }
+            collection.add((T) strategy.createThing(fields));
 
         }
         return collection;
