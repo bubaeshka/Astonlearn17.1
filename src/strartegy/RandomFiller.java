@@ -1,5 +1,7 @@
 package strartegy;
 
+import domain.Thing;
+
 import java.util.List;
 
 public class RandomFiller implements Filler{

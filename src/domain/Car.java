@@ -44,6 +44,16 @@ public class Car extends Thing {
     public int compare(Object o1, Object o2) {
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "modelName=" + super.getName()+
+                ", madeYear=" + madeYear +
+                ", power=" + power +
+                '}';
+    }
+
     public static class CarBuilder{
         private String nameModel;
         private int madeYear;

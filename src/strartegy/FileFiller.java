@@ -1,8 +1,6 @@
 package strartegy;
 
 
-
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -21,15 +19,17 @@ public class FileFiller implements Filler {
     @Override
     public List<?> fillCollection(String fileName, List<?> list) {
         List<String> strings = readFile(fileName);
+
+
         for (int i = 0; i < strings.size(); i++) {
             String[] fieldValue = parsingString(strings.get(i));
-            String field0 = fieldValue[0];
-            String field1 = fieldValue[1];
-            String field2 = fieldValue[2];
+
             //Создание экземпляры класса
             // добавление его в коллекцию
         }
+
         return list;
+
     }
 
     public List<String> readFile(String fileName) {
