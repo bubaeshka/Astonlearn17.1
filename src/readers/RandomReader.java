@@ -28,9 +28,9 @@ public class RandomReader extends BaseReader {
     }
 
     String generate(FieldDescription fd) {
-        if (fd.fieldType == FieldDescription.FieldType.INT) {
+        if (fd.type == FieldDescription.Type.INT) {
             return String.valueOf((int) (Math.random() * 100));
-        } else if (fd.fieldType == FieldDescription.FieldType.STRING) {
+        } else if (fd.type == FieldDescription.Type.STRING) {
             return generateRandomString(8);
         }
         throw new IllegalArgumentException("unknown field type encountered");

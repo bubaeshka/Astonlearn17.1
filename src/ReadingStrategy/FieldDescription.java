@@ -1,14 +1,14 @@
 package ReadingStrategy;
 
 public class FieldDescription {
-	public enum FieldType {
+	public enum Type {
 		STRING, INT 
 	}
 	public FieldDescription(String fieldName, FieldDescription.FieldType fieldType) {
 		super();
-		this.fieldName = fieldName;
-		this.fieldType = fieldType;
+		this.name = name;
+		this.type = type;
 	}
-	public String fieldName;
-	public FieldDescription.FieldType fieldType;
+    public String name;
+    public Type type;
 }
