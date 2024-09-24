@@ -40,7 +40,7 @@ public class RandomReader extends BaseReader {
     public
     List<Thing> read() {
         ArrayList<Thing> collection = new ArrayList<>();
-        FieldDescription[] fds = strategy.getNeededFieds();
+        FieldDescription[] fds = strategy.getNeededFields();
         int elemCount = fds.length;
         for (int i = 0; i < count; i++) {
             String[] fields = new String[elemCount];
