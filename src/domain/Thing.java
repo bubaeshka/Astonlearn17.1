@@ -1,6 +1,6 @@
 package domain;
 
-public abstract class Thing implements Comparable {
+public abstract class Thing {
 
     protected String name;
 

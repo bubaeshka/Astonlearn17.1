@@ -1,6 +1,6 @@
 package domain;
 
-public class Car extends Thing {
+public class Car extends Thing implements Comparable<Car>{
     private int madeYear;
     private int power;
 
@@ -31,7 +31,13 @@ public class Car extends Thing {
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Car o) {
+        int t=name.compareTo(o.name);
+        if (t!=0)return t;
+        t=madeYear-o.madeYear;
+        if (t!=0)return t;
+        t=power-o.power;
+        if (t!=0)return t;
         return 0;
     }
 
