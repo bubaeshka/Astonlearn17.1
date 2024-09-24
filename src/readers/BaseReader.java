@@ -1,16 +1,17 @@
 package readers;
 
 import java.util.List;
-
-import ReadingStrategy.BaseReadingStrategy;
 import domain.Thing;
 
-public abstract class BaseReader {
-    BaseReadingStrategy strategy;
+import ReadingStrategy.BaseReadingStrategy;
 
-    public BaseReader(BaseReadingStrategy strategy) {
+public abstract class BaseReader<T extends Thing> {
+    BaseReadingStrategy<T> strategy;
+
+    public BaseReader(BaseReadingStrategy<T> strategy) {
         this.strategy = strategy;
     }
-    public abstract List<Thing>  read();   
+
+    public abstract List<T> read();
 
 }

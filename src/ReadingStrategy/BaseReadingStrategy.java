@@ -9,13 +9,13 @@ import domain.Thing;
 // organize it into array in order corresponding to getNeededFields()
 // then pass it to validate(), if successful then pass it to createThing().
 // Fresh baked Thing object add to collection and cycle again
-public abstract class BaseReadingStrategy {
+public abstract class BaseReadingStrategy <T extends Thing>{
     protected FieldDescription[] fieldsDescriptions;
 
     abstract public FieldDescription[] getNeededFields();
 
     // the order of input fields SHOULD be the same as in getNeededFields
-    abstract public Thing createThing(String[] inputfields);
+    abstract public T createThing(String[] inputfields);
 
     // the order of input fields SHOULD be the same as in getNeededFields
 
