@@ -1,6 +1,8 @@
 package domain;
 
-public class Car extends Thing {
+import java.util.Comparator;
+
+public class Car extends Thing implements Comparable<Car> {
     private  int madeYear;
     private int power;
 
@@ -31,12 +33,11 @@ public class Car extends Thing {
     }
 
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Car car) {
+        return Comparator.comparing(Car::getMadeYear)
+                .thenComparing(Car::getPower)
+                .thenComparing(Car::getName)
+                .compare(this, car);
     }
 
-    @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
-    }
 }

@@ -1,4 +1,4 @@
-package strartegy;
+package strategy;
 
 import java.util.List;
 

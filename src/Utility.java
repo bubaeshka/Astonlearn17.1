@@ -64,4 +64,37 @@ public final class Utility {
 		return res;
 	}
 
+	// binary search realization is below
+	public static <T extends Comparable<T>> int binarySearch(List<T> lst, T target) {
+		class myComparator implements Comparator<T> {
+			@Override
+			public int compare(T o1, T o2) {
+				return o1.compareTo(o2);
+			}
+		}
+		return binarySearch(lst, target, new myComparator(),0, lst.size());
+	}
+
+	public static <T extends Comparable<T>> int binarySearch(List<T> lst, T target, Comparator<? super T> c) {
+		return binarySearch(lst, target, c,0, lst.size());
+	}
+
+	public static <T> int binarySearch(List<T> lst, T target, Comparator<? super T> c, int left, int right) {
+		int index = Integer.MAX_VALUE;
+
+		while (left <= right) {
+			int mid = left + ((right - left) / 2);
+			if (c.compare(lst.get(mid), target) < 0) {
+				left = mid + 1;
+			} else if (c.compare(lst.get(mid), target) > 0) {
+				right = mid - 1;
+			} else if (c.compare(lst.get(mid), target) == 0) {
+				index = mid;
+				break;
+			}
+		}
+		return index;
+
+	}
+
 }

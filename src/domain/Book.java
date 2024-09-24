@@ -1,6 +1,8 @@
 package domain;
 
-public class Book extends Thing {
+import java.util.Comparator;
+
+public class Book extends Thing implements Comparable<Book> {
     private int pages; //опция
     private String author; //опция
 
@@ -42,14 +44,13 @@ public class Book extends Thing {
     }
 
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Book book) {
+        return Comparator.comparing(Book::getPages)
+                .thenComparing(Book::getAuthor)
+                .thenComparing(Book::getName).
+                compare(this, book);
     }
 
-    @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
-    }
 
     //сам билдер
     public static class BookBuilder {
@@ -83,8 +84,8 @@ public class Book extends Thing {
     @Override
     public String toString() {
         return "Book{" +
-                "names= "+ super.getName()+
-                "pages=" + pages +
+                "name='"+ super.getName() + '\'' +
+                ", pages=" + pages +
                 ", author='" + author + '\'' +
                 '}';
     }
