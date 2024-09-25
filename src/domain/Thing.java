@@ -3,7 +3,9 @@ package domain;
 
 import java.util.Comparator;
 
+
 public abstract class Thing implements Comparable <Thing> , Comparator<Thing> {
+
     private String name;
     //protected String name;
 
@@ -20,6 +22,8 @@ public abstract class Thing implements Comparable <Thing> , Comparator<Thing> {
         this.name = name;
     }
 
+
+=======
 
     @Override
     public String toString() {

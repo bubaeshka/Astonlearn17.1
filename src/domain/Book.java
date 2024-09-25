@@ -1,7 +1,12 @@
 package domain;
 
 
+import java.util.Comparator;
+
+
+
 public class Book extends Thing  {
+
 
 
     private int pages; //опция
@@ -46,6 +51,14 @@ public class Book extends Thing  {
 
 /*
     @Override
+    public int compareTo(Book book) {
+        return Comparator.comparing(Book::getPages)
+                .thenComparing(Book::getAuthor)
+                .thenComparing(Book::getName).
+                compare(this, book);
+    }
+
+
     public int compareTo(Book o) {
         int t=name.compareTo(o.name);
         if (t!=0)return t;
@@ -57,6 +70,7 @@ public class Book extends Thing  {
     }
 
  */
+
 
 
     //сам билдер
@@ -91,8 +105,8 @@ public class Book extends Thing  {
     @Override
     public String toString() {
         return "Book{" +
-                "names= "+ super.getName()+
-                "pages=" + pages +
+                "name='"+ super.getName() + '\'' +
+                ", pages=" + pages +
                 ", author='" + author + '\'' +
                 '}';
     }

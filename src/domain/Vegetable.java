@@ -1,6 +1,11 @@
 package domain;
 
+
+import java.util.Comparator;
+
+
 public class Vegetable extends Thing {
+
     private int weight;
     private String color;
 
@@ -37,6 +42,15 @@ public class Vegetable extends Thing {
     public void setColor(String color) {
         this.color = color;
     }
+
+
+    public int compareTo(Vegetable vegetable) {
+        return Comparator.comparing(Vegetable::getWeight)
+                .thenComparing(Vegetable::getColor)
+                .thenComparing(Vegetable::getName)
+                .compare(this, vegetable);
+    }
+
 
 
     /*
@@ -95,5 +109,6 @@ public class Vegetable extends Thing {
             return new Vegetable(this);
         }
     }
+
 }
 

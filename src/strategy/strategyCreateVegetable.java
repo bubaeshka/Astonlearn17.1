@@ -1,12 +1,8 @@
-package strartegy;
+package strategy;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.List;
 
-public class StrategyCreateCar implements StrategyCreateCollection {
-    private BufferedReader br;
-
+public class strategyCreateVegetable implements StrategyCreateCollection {
     @Override
     public List<?> createCollectionFromFile(String fileName) {
         return List.of();

@@ -1,9 +1,15 @@
 package domain;
 
+
+import java.util.Comparator;
+
+
+
 public class Car extends Thing {
 
 
     private int madeYear;
+
     private int power;
 
     public Car(String name) {
@@ -41,6 +47,15 @@ public class Car extends Thing {
 
     /*
     @Override
+    public int compareTo(Car car) {
+        return Comparator.comparing(Car::getMadeYear)
+                .thenComparing(Car::getPower)
+                .thenComparing(Car::getName)
+                .compare(this, car);
+    }
+
+}
+
     public int compareTo(Car o) {
         int t=name.compareTo(o.name);
         if (t!=0)return t;
@@ -90,3 +105,4 @@ public class Car extends Thing {
         }
     }
 }
+
