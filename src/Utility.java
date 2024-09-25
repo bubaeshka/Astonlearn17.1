@@ -79,7 +79,7 @@ public final class Utility {
 		return binarySearch(lst, target, c,0, lst.size());
 	}
 
-	public static <T> int binarySearch(List<T> lst, T target, Comparator<? super T> c, int left, int right) {
+	private static <T> int binarySearch(List<T> lst, T target, Comparator<? super T> c, int left, int right) {
 		int index = Integer.MAX_VALUE;
 
 		while (left <= right) {
