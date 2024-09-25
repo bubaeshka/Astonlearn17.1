@@ -1,10 +1,6 @@
 package domain;
 
-
-import java.util.Comparator;
-
-
-public abstract class Thing implements Comparable <Thing> , Comparator<Thing> {
+public abstract class Thing {
 
     private String name;
     //protected String name;
@@ -23,23 +19,10 @@ public abstract class Thing implements Comparable <Thing> , Comparator<Thing> {
     }
 
 
-=======
-
     @Override
     public String toString() {
         return "Thing [name=" + name + "]";
     }
 
-    /*
-    public int compareTo(Thing o) {
-        return 0;
-    }
-
-
-    public int compare(Thing o1, Thing o2) {
-        return 0;
-    }
-
-     */
 
 }
