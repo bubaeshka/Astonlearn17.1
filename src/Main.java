@@ -1,12 +1,13 @@
-import domain.Book;
+import java.util.List;
+import domain.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        Book bb = new Book.BookBuilder("Изучаем Java").setPages(1000).setAuthor("Шилдт").build();
-
-        System.out.println("Hello world!");
-
+        List<Thing> list = new readers.RandomReader(new ReadingStrategy.CarReadingStrategy(), 5).read();
+		for (Thing thing : list) {
+			System.out.println(thing);
+		}
     }
 
 }

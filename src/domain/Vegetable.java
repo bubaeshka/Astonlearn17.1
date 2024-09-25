@@ -1,6 +1,6 @@
 package domain;
 
-public class Vegetable extends Thing{
+public class Vegetable extends Thing implements Comparable<Vegetable> {
     private int weight;
     private String color;
 
@@ -40,6 +40,18 @@ public class Vegetable extends Thing{
 
 
     @Override
+    public int compareTo(Vegetable o) {
+		int t=name.compareTo(o.name);
+		if (t!=0)return t;
+		t=weight-o.weight;
+		if (t!=0)return t;
+		t=color.compareTo(o.color);
+		if (t!=0)return t;
+        return 0;
+    }
+ 
+}
+
     public int compareTo(Thing o) {
         return (this.weight - ((Vegetable)o).getWeight());
     }
@@ -81,3 +93,4 @@ public class Vegetable extends Thing{
         }
     }
 }
+

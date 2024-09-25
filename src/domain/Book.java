@@ -1,6 +1,9 @@
 package domain;
 
-public class Book extends Thing  {
+
+public class Book extends Thing implements Comparable<Book> {
+
+
     private int pages; //опция
     private String author; //опция
 
@@ -40,6 +43,18 @@ public class Book extends Thing  {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+
+    @Override
+    public int compareTo(Book o) {
+        int t=name.compareTo(o.name);
+        if (t!=0)return t;
+        t=author.compareTo(o.author) ;
+        if (t!=0)return t;
+        t=pages-o.pages ;
+        if (t!=0)return t;
+        return 0;
+    }    
 
 
     //сам билдер

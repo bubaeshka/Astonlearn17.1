@@ -1,9 +1,11 @@
 package domain;
 
-import java.util.Comparator;
+    
 
 public abstract class Thing implements Comparable <Thing> , Comparator <Thing> {
     private String name;
+    //protected String name;
+
 
     public Thing(String name) {
         this.name = name;
@@ -15,6 +17,12 @@ public abstract class Thing implements Comparable <Thing> , Comparator <Thing> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Thing [name=" + name + "]";
     }
 
     /*
