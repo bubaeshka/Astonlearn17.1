@@ -8,10 +8,17 @@ public class Car extends Thing implements Comparable<Car>{
         super(name);
     }
 
-    public Car(String name, int madeYear, int power) {
-        super(name);
-        this.madeYear = madeYear;
-        this.power = power;
+//    public Car(String name, int madeYear, int power) {
+//        super(name);
+//        this.madeYear = madeYear;
+//        this.power = power;
+//    }
+
+    //приватный конструктор Car
+    private Car(CarBuilder carBuilder){
+        super(carBuilder.nameModel);
+        this.madeYear = carBuilder.madeYear;
+        this.power = carBuilder.power;
     }
 
     public int getMadeYear() {
@@ -31,6 +38,7 @@ public class Car extends Thing implements Comparable<Car>{
     }
 
     @Override
+
     public int compareTo(Car o) {
         int t=name.compareTo(o.name);
         if (t!=0)return t;
@@ -44,5 +52,36 @@ public class Car extends Thing implements Comparable<Car>{
     @Override
     public String toString() {
         return "Car [name=" + name + ", madeYear=" + madeYear + ", power=" + power + "]";
+
+    public int compareTo(Thing o) {
+        return (this.power-((Car)o).getPower());
+    }
+
+    @Override
+    public int compare(Thing o1, Thing o2) {
+        return 0;
+
+    }
+
+    //билдер Car
+    public static class CarBuilder{
+        private final String nameModel;
+        private int madeYear;
+        private int power;
+
+        public CarBuilder(String nameModel){
+            this.nameModel = nameModel;
+        }
+        public CarBuilder setMadeYear(int madeYear){
+            this.madeYear = madeYear;
+            return this;
+        }
+        public CarBuilder setPower(int power){
+            this.power = power;
+            return this;
+        }
+        public Car build(){
+            return new Car(this);
+        }
     }
 }
