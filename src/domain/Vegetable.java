@@ -4,7 +4,7 @@ package domain;
 import java.util.Comparator;
 
 
-public class Vegetable extends Thing {
+public class Vegetable extends Thing implements Comparable<Vegetable> {
 
     private int weight;
     private String color;
@@ -43,53 +43,8 @@ public class Vegetable extends Thing {
         this.color = color;
     }
 
-
-    public int compareTo(Vegetable vegetable) {
-        return Comparator.comparing(Vegetable::getWeight)
-                .thenComparing(Vegetable::getColor)
-                .thenComparing(Vegetable::getName)
-                .compare(this, vegetable);
-    }
-
-
-
-    /*
-    @Override
-    public int compareTo(Vegetable o) {
-		int t=name.compareTo(o.name);
-		if (t!=0)return t;
-		t=weight-o.weight;
-		if (t!=0)return t;
-		t=color.compareTo(o.color);
-		if (t!=0)return t;
-        return 0;
-    }
-
-     */
- 
-
-
-    public int compareTo(Thing o) {
-        return (this.weight - ((Vegetable)o).getWeight());
-    }
-
-    @Override
-    public int compare(Thing o1, Thing o2) {
-        return 0;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Vegetable{" +
-                "Type=" + super.getName() +
-                "weight=" + weight +
-                ", color='" + color + '\'' +
-                '}';
-    }
-
     //билдер Vegetable
-    public static class VegetableBuilder {
+    static class VegetableBuilder {
         private final String typeName;
         private int weight;
         private String color;
@@ -108,6 +63,23 @@ public class Vegetable extends Thing {
         public Vegetable build() {
             return new Vegetable(this);
         }
+    }
+
+
+    public int compareTo(Vegetable vegetable) {
+        return Comparator.comparing(Vegetable::getWeight)
+                .thenComparing(Vegetable::getColor)
+                .thenComparing(Vegetable::getName)
+                .compare(this, vegetable);
+    }
+
+    @Override
+    public String toString() {
+        return "Vegetable{" +
+                "Type=" + super.getName() +
+                "weight=" + weight +
+                ", color='" + color + '\'' +
+                '}';
     }
 
 }
