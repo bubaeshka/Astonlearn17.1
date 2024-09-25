@@ -13,6 +13,8 @@ public class Vegetable extends Thing{
 //        this.weight = weight;
 //        this.color = color;
 //    }
+
+    //конструктор Vegetable
     private Vegetable(VegetableBuilder vegetableBuilder) {
         super(vegetableBuilder.typeName);
         this.weight = vegetableBuilder.weight;
@@ -56,8 +58,10 @@ public class Vegetable extends Thing{
                 ", color='" + color + '\'' +
                 '}';
     }
+
+    //билдер Vegetable
     public static class VegetableBuilder {
-        private String typeName;
+        private final String typeName;
         private int weight;
         private String color;
 

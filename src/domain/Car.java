@@ -13,6 +13,8 @@ public class Car extends Thing {
 //        this.madeYear = madeYear;
 //        this.power = power;
 //    }
+
+    //приватный конструктор Car
     private Car(CarBuilder carBuilder){
         super(carBuilder.nameModel);
         this.madeYear = carBuilder.madeYear;
@@ -44,8 +46,10 @@ public class Car extends Thing {
     public int compare(Object o1, Object o2) {
         return 0;
     }
+
+    //билдер Car
     public static class CarBuilder{
-        private String nameModel;
+        private final String nameModel;
         private int madeYear;
         private int power;
 

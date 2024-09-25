@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Comparator;
 
-public abstract class Thing implements Comparable , Comparator {
+public abstract class Thing implements Comparable <Thing> , Comparator <Thing> {
     private String name;
 
     public Thing(String name) {
