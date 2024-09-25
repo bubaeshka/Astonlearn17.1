@@ -11,6 +11,6 @@ public abstract class BaseReader {
     public BaseReader(BaseReadingStrategy strategy) {
         this.strategy = strategy;
     }
-    public abstract List<Thing>  read();   
+    public abstract List<Thing> read();
 
 }

@@ -20,7 +20,6 @@ public class CarReadingStrategy extends BaseReadingStrategy {
         return fieldsDescriptions;
     }
 
-
     @Override
     public Thing createThing(String[] inputfields) {
         return new Car.Builder(inputfields[0])
