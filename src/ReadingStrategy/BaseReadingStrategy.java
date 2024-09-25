@@ -9,6 +9,7 @@ import domain.Thing;
 // organize it into array in order corresponding to getNeededFields()
 // then pass it to validate(), if successful then pass it to createThing().
 // Fresh baked Thing object add to collection and cycle again
+
 public abstract class BaseReadingStrategy {
     protected FieldDescription[] fieldsDescriptions;
 

@@ -1,8 +1,9 @@
 package domain;
 
-    
 
-public abstract class Thing implements Comparable <Thing> , Comparator <Thing> {
+import java.util.Comparator;
+
+public abstract class Thing implements Comparable <Thing> , Comparator<Thing> {
     private String name;
     //protected String name;
 
