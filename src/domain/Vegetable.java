@@ -20,7 +20,7 @@ public class Vegetable extends Thing implements Comparable<Vegetable> {
 //    }
 
     //конструктор Vegetable
-    private Vegetable(VegetableBuilder vegetableBuilder) {
+    private Vegetable(Builder vegetableBuilder) {
         super(vegetableBuilder.typeName);
         this.weight = vegetableBuilder.weight;
         this.color = vegetableBuilder.color;
@@ -44,19 +44,20 @@ public class Vegetable extends Thing implements Comparable<Vegetable> {
     }
 
     //билдер Vegetable
-    static class VegetableBuilder {
+    public static class Builder {
         private final String typeName;
         private int weight;
         private String color;
 
-        public VegetableBuilder(String typeName) {
+        public Builder(String typeName) {
             this.typeName = typeName;
         }
-        public VegetableBuilder setWeight(int weight) {
+
+        public Builder setWeight(int weight) {
             this.weight = weight;
             return this;
         }
-        public VegetableBuilder setColor(String color) {
+        public Builder setColor(String color) {
             this.color = color;
             return this;
         }

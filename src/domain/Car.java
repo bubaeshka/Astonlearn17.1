@@ -17,7 +17,7 @@ public class Car extends Thing implements Comparable<Car> {
 
 
     //приватный конструктор Car
-    private Car(CarBuilder carBuilder){
+    private Car(Builder carBuilder){
         super(carBuilder.nameModel);
         this.madeYear = carBuilder.madeYear;
         this.power = carBuilder.power;
@@ -27,32 +27,24 @@ public class Car extends Thing implements Comparable<Car> {
         return madeYear;
     }
 
-    public void setMadeYear(int madeYear) {
-        this.madeYear = madeYear;
-    }
-
     public int getPower() {
         return power;
     }
 
-    public void setPower(int power) {
-        this.power = power;
-    }
-
     //билдер Car
-    static class CarBuilder{
+    public static class Builder{
         private final String nameModel;
         private int madeYear;
         private int power;
 
-        public CarBuilder(String nameModel){
+        public Builder(String nameModel){
             this.nameModel = nameModel;
         }
-        public CarBuilder setMadeYear(int madeYear){
+        public Builder setMadeYear(int madeYear){
             this.madeYear = madeYear;
             return this;
         }
-        public CarBuilder setPower(int power){
+        public Builder setPower(int power){
             this.power = power;
             return this;
         }

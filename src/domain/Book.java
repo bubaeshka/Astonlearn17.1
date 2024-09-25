@@ -18,7 +18,7 @@ public class Book extends Thing implements Comparable<Book> {
     }
     **/
 
-    private Book(BookBuilder bookBuilder) {
+    private Book(Builder bookBuilder) {
         //приватный конструктор билдера
         super(bookBuilder.name);
         this.pages = bookBuilder.pages;
@@ -55,24 +55,24 @@ public class Book extends Thing implements Comparable<Book> {
 
 
     //сам билдер
-    static class BookBuilder {
+    public static class Builder {
         private final String name;
         private int pages;
         private String author;
 
         //конструктор билдера с обязательным полем
-        public BookBuilder(String name) {
+        public Builder(String name) {
             this.name = name;
         }
 
         //поле опция страницы
-        public BookBuilder setPages(int pages) {
+        public Builder setPages(int pages) {
             this.pages = pages;
             return this;
         }
 
         //поле опция авторов
-        public BookBuilder setAuthor(String author) {
+        public Builder setAuthor(String author) {
             this.author = author;
             return this;
         }
