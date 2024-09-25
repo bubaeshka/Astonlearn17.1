@@ -105,7 +105,7 @@ public final class Utility {
 		}
 	}
 
-	public static <T extends Comparable<T>> void strahgeSort(List<T> lst, KeyGetter<T> keyGetter) {
+	public static <T extends Comparable<T>> void strangeSort(List<T> lst, KeyGetter<T> keyGetter) {
 
 		class myComparator implements Comparator<T> {
 			KeyGetter<T> keyGetter;
