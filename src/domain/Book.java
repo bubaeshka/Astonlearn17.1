@@ -1,6 +1,6 @@
 package domain;
 
-public class Book extends Thing {
+public class Book extends Thing  {
     private int pages; //опция
     private String author; //опция
 
@@ -41,15 +41,6 @@ public class Book extends Thing {
         this.author = author;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
-
-    @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
-    }
 
     //сам билдер
     public static class BookBuilder {
@@ -87,5 +78,15 @@ public class Book extends Thing {
                 "pages=" + pages +
                 ", author='" + author + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Thing o) {
+        return (this.pages-((Book)o).getPages());
+    }
+
+    @Override
+    public int compare(Thing o1, Thing o2) {
+        return 0;
     }
 }

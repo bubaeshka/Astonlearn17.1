@@ -40,12 +40,12 @@ public class Vegetable extends Thing{
 
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Thing o) {
         return (this.weight - ((Vegetable)o).getWeight());
     }
 
     @Override
-    public int compare(Object o1, Object o2) {
+    public int compare(Thing o1, Thing o2) {
         return 0;
     }
 
