@@ -59,7 +59,7 @@ public class RandomReader extends BaseReader {
                 i--;
                 continue;
             }
-            collection.add((T) strategy.createThing(fields));
+            collection.add((Thing) strategy.createThing(fields));
 
         }
         return collection;
