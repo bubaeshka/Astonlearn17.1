@@ -73,11 +73,11 @@ public final class Utility {
 				return o1.compareTo(o2);
 			}
 		}
-		return binarySearch(lst, target, new myComparator(),0, lst.size());
+		return binarySearch(lst, target, new myComparator(), 0, lst.size());
 	}
 
 	public static <T extends Comparable<T>> int binarySearch(List<T> lst, T target, Comparator<? super T> c) {
-		return binarySearch(lst, target, c,0, lst.size());
+		return binarySearch(lst, target, c, 0, lst.size());
 	}
 
 	private static <T> int binarySearch(List<T> lst, T target, Comparator<? super T> c, int left, int right) {
