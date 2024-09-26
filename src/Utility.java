@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
 public final class Utility {
 
@@ -98,35 +98,13 @@ public final class Utility {
 
 	}
 
-	class KeyGetter<T> implements Function<T, Integer> {
-		@Override
-		public Integer apply(T t) {
-			return 5;
-		}
-	}
-
-	public static <T extends Comparable<T>> void strangeSort(List<T> lst, KeyGetter<T> keyGetter) {
-
-		class myComparator implements Comparator<T> {
-			KeyGetter<T> keyGetter;
-
-			public myComparator(KeyGetter<T> keyGetter) {
-				this.keyGetter = keyGetter;
-			}
-
-			@Override
-			public int compare(T o1, T o2) {
-				Integer key1 = keyGetter.apply(o1);
-				Integer key2 = keyGetter.apply(o2);
-				return key1.compareTo(key2);
-			}
-		}
+	public static <T> void strangeSort(List<T> lst, ToIntFunction<? super T> keyGetter) {
 		ArrayList<T> movableList = new ArrayList<T>();
-		movableList.addAll(lst.stream().filter(X -> keyGetter.apply(X) % 2 == 0).toList());
-		sort(movableList, new myComparator(keyGetter));
+		movableList.addAll(lst.stream().filter(X -> keyGetter.applyAsInt(X) % 2 == 0).toList());
+		sort(movableList, Comparator.comparingInt(keyGetter));
 		int j = 0;
 		for (int i = 0; i < lst.size(); i++) {
-			if (keyGetter.apply(lst.get(i)) % 2 == 0) {
+			if (keyGetter.applyAsInt(lst.get(i)) % 2 == 0) {
 				lst.set(i, movableList.get(j));
 				j++;
 			}
