@@ -1,5 +1,8 @@
 package domain;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Thing {
 
     private String name;
@@ -25,4 +28,9 @@ public abstract class Thing {
     }
 
 
+	public Map<String, String> getHumanReadableFieldMap(){
+		var res = new HashMap<String, String>();
+		res.put("name","обобщенное название");
+		return res;
+	}
 }

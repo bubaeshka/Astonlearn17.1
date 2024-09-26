@@ -1,6 +1,8 @@
 package domain;
 
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Book extends Thing implements Comparable<Book> {
     private int pages; //опция
@@ -91,5 +93,14 @@ public class Book extends Thing implements Comparable<Book> {
                 ", author='" + author + '\'' +
                 '}';
     }
+	@Override
+	public Map<String, String> getHumanReadableFieldMap() {
+		var res = new HashMap<String, String>();
+		res.put("name", "название");
+		res.put("pages", "Количество страниц");
+		res.put("author", "автор");
+		return res;
+	}
+
 
 }
