@@ -23,7 +23,7 @@ public class Main {
 	static <T extends Thing> void testStrange() {
 		var list = new readers.RandomReader<Car>(new ReadingStrategy.CarReadingStrategy(), 5).read();
 		Utility.dumpList(list);
-		var ctrl = new controller.controllerStrangeSort<Car>(list);
+		var ctrl = new controller.ControllerStrangeSort<Car>(list);
 		ctrl.run();
 	}
 

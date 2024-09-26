@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.ToIntFunction;
 
-public final class controllerStrangeSort<T extends Thing> {
+public final class ControllerStrangeSort<T extends Thing> {
 
 //	enum carIntGetters {
 //		WEIGHT("во весу", (Car car) -> car.getMadeYear()),
@@ -51,7 +51,7 @@ public final class controllerStrangeSort<T extends Thing> {
 
 	private List<T> lst;
 
-	public controllerStrangeSort(List<T> lst) {
+	public ControllerStrangeSort(List<T> lst) {
 		this.lst = lst;
 	}
 
