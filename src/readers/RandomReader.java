@@ -46,7 +46,7 @@ public class RandomReader<T> extends BaseReader {
 
     @Override
     public List<T> read() {
-        ArrayList<Thing> collection = new ArrayList<>();
+        var collection = new ArrayList<T>();
         FieldDescription[] fds = strategy.getNeededFields();
         int elemCount = fds.length;
         for (int i = 0; i < count; i++) {
@@ -59,11 +59,11 @@ public class RandomReader<T> extends BaseReader {
                 continue;
             }
             
-            collection.add(strategy.createThing(fields));
-            collection.add((Thing) strategy.createThing(fields));
+            collection.add((T) strategy.createThing(fields));
+            //collection.add((Thing) strategy.createThing(fields));
 
         }
-        return (List<T>) collection;
+        return collection;
     }
 
 }

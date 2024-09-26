@@ -1,25 +1,59 @@
 package controller;
 
+import ReadingStrategy.BookReadingStrategy;
+import ReadingStrategy.CarReadingStrategy;
+import ReadingStrategy.VegetableReadingStrategy;
+import domain.Car;
+import domain.Vegetable;
+import readers.BaseReader;
+import readers.RandomReader;
+import utility.Utility;
+
 import java.awt.print.Book;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MainController {
-    List<?> list;
+    private List container;
+    private BaseReader reader;
+
+    private static final class Holder {
+        private static final MainController INSTANCE = new MainController();
+    }
+
+    public static MainController getInstance() {
+        return Holder.INSTANCE;
+    }
 
     public void run() {
-        System.out.println("Hello my friend\n");
+        System.out.println("НАЧАЛО\n");
+
         while (true) {
-            String typeCollection = enterTypeCollection();
-            int countElement = enterCountElement();
-            int typeofCreating = enterTypeOfCreating();
-            List listElement = definitionTypeCollection(typeCollection);
+            CollectionType collectionType;
+            do {
+                collectionType = enterCollectionType();
+            } while (collectionType == null);
 
+            Integer elementsNum;
+            do {
+                elementsNum = enterElementsNumber();
+            } while (elementsNum == null);
 
+            CreationType creationType;
+            do {
+                creationType = enterCreationType();
+            } while (creationType == null);
+
+            defineReader(collectionType, creationType, elementsNum);
+            if (reader != null) container = reader.read();
+
+            System.out.println("\nИсходная коллекция: \n" + container);
+            Utility.sort(container);
+            System.out.println("\nОтсортированная коллекция: \n" + container);
 
             String exit = exit();
             if (!exit.equalsIgnoreCase("y")) {
+                System.out.println("КОНЕЦ");
                 System.exit(0);
             }
         }
@@ -32,32 +66,87 @@ public class MainController {
         return in.nextLine();
     }
 
-    private String enterTypeCollection() {
-        return prompt("Enter type element  : \n" +
-                "1.Сar\n" +
-                "2.Book\n" +
-                "3.Root vegetable \n");
+    private CollectionType enterCollectionType() {
+        var options = "\n" + Arrays.stream(CollectionType.values())
+                .map(option -> "    %d. %s"
+                        .formatted(option.ordinal() + 1,
+                                option.getName()))
+                .collect(Collectors.joining("\n"));
+
+        String input = prompt("""
+                Введите тип объектов: %s
+                """.formatted(options));
+        for (CollectionType type : CollectionType.values()) {
+            for (String pseudonym : type.getPseudonyms()) {
+                if (input.equals(pseudonym)) return type;
+            }
+        }
+        System.out.println("Некорректный тип объектов. Попробуйте снова.");
+        return null;
     }
 
-    private Integer enterCountElement() {
-        return Integer.valueOf(prompt("Enter count element: "));
+    private Integer enterElementsNumber() {
+        try {
+        return Integer.valueOf(prompt("Введите количество объектов: "));
+        } catch (java.lang.NumberFormatException e) {
+            System.out.println("Некорректное количество объектов. Попробуйте снова.");
+        }
+        return null;
     }
 
-    private Integer enterTypeOfCreating() {
-        return Integer.valueOf(prompt("Enter type creating: \n" +
-                "1.Read file.\n " +
-                "2.Random creating.\n" +
-                "3.Console input. "));
+
+
+    private CreationType enterCreationType() {
+        var options = "\n" + Arrays.stream(CreationType.values())
+                .map(option -> "    %d. %s"
+                        .formatted(option.ordinal() + 1,
+                                option.getName()))
+                .collect(Collectors.joining("\n"));
+
+        String input = prompt("""
+                Введите способ ввода данных: %s
+                """.formatted(options));
+        for (CreationType type : CreationType.values()) {
+            for (String pseudonym : type.getPseudonyms()) {
+                if (input.equals(pseudonym)) return type;
+            }
+        }
+        System.out.println("Некорректный способ ввода. Попробуйте снова.");
+        return null;
     }
+
+    /*
+    private Integer enterCreationType() {
+        return Integer.valueOf(prompt("""
+                Введите способ ввода данных:
+                    1. %s;
+                    2. %s;
+                    3. %s
+                """.formatted(CreationType.MANUAL.getName(),
+                    CreationType.FILE.getName(),
+                    CreationType.RANDOM.getName()))
+        );
+    }
+    */
+
 
     private String exit() {
         Scanner in = new Scanner(System.in);
-        System.err.println("Continue?... (y/n)");
+        System.out.println("\nПродолжить?... (y/n)");
         return in.nextLine();
     }
-
+    /*
     //метод, который будет определять какого типа будет коллекция
-    private List definitionTypeCollection(String typeCollection) {
+    private void defineContainer(CollectionType collectionType) {
+        container = switch (collectionType) {
+            case CollectionType.CAR -> new ArrayList<Car>();
+            case CollectionType.BOOK  -> new ArrayList<Book>();
+            case CollectionType.VEGETABLE  -> new ArrayList<Vegetable>();
+        };
+    }
+    */
+
+/*
         if (typeCollection.equals("Book")) {
             return list = new ArrayList<Book>();
         } else if (typeCollection.equals("Car")) {
@@ -66,10 +155,22 @@ public class MainController {
 //            return new ArrayList<Vegetable>();
         }
         return null;
-    }
+    } */
 
     // определение типа создания коллекции(чтение из файла, рандомное создание, ввод с консоли)
-    private void definitionTypeCreateCollection(String typeCreate) {
+    private void defineReader(CollectionType collectionType, CreationType creationType, int elementsNum) {
+        var readingStrategy = switch (collectionType) {
+            case CollectionType.CAR -> new CarReadingStrategy();
+            case CollectionType.BOOK  -> new BookReadingStrategy();
+            case CollectionType.VEGETABLE  -> new VegetableReadingStrategy();
+        };
+        reader = switch (creationType) {
+            //case CreationType.MANUAL -> new ConsoleReader<>();
+            //case CreationType.FILE  -> new FileReader<>();
+            case CreationType.RANDOM -> new RandomReader<>(readingStrategy, elementsNum);
+            default -> null;
+        };
+        /*
         if (typeCreate.equals("Read file.")) {
             //вызов метода читалки из файла
         } else if (typeCreate.equals("Random creating.")) {
@@ -77,8 +178,9 @@ public class MainController {
         }
         else if (typeCreate.equals("Console input. ")) {
             // читать с консоли
-        }
+        } */
     }
+
     //заполняет коллекцию элементами выбранного класса
     private void fillCollection(List list, String typeCollection,int countElement) {
 

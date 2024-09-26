@@ -1,3 +1,5 @@
+package utility;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.function.Function;
 public final class Utility {
 
     private Utility() {
-        throw new java.lang.UnsupportedOperationException("Utility class should not be instantiated");
+        throw new java.lang.UnsupportedOperationException("utility.Utility class should not be instantiated");
     }
 
     public static <T extends Comparable<T>> void sort(List<T> lst) {
