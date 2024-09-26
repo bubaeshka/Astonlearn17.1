@@ -78,7 +78,7 @@ public class Vegetable extends Thing implements Comparable<Vegetable> {
     public String toString() {
         return "Vegetable{" +
                 "Type=" + super.getName() +
-                "weight=" + weight +
+                ", weight=" + weight +
                 ", color='" + color + '\'' +
                 '}';
     }
