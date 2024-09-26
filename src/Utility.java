@@ -111,4 +111,14 @@ public final class Utility {
 		}
 
 	}
+
+	public static void dumpList(List<?> list) {
+		System.out.println("содержимое списка");
+
+		for (var thing : list) {
+			System.out.println(thing);
+		}
+		System.out.println("конец списка");
+		System.out.println();
+	}
 }
