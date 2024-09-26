@@ -1,7 +1,7 @@
 package Validators;
 
 public class IntBoundsValidator extends BaseValidator {
-    private int min, max;
+    private final int min, max;
 
     public IntBoundsValidator(int min, int max) {
         this.min = min;
@@ -18,7 +18,10 @@ public class IntBoundsValidator extends BaseValidator {
 
     @Override
     public ValidationResult validate(String s) {
-        Integer val;
+        //затычка для переменных полей
+        if (s==null)
+            return new ValidationResult(true, "");
+        int val;
         try {
             val = Integer.parseInt(s);
         } catch (NumberFormatException e) {
