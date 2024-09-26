@@ -2,8 +2,7 @@ import controller.MainController;
 import java.util.ArrayList;
 import java.util.List;
 import domain.*;
-import java.lang.reflect.Field;
-import java.net.http.HttpResponse.PushPromiseHandler;
+import domain.Thing;
 
 public class Main {
 	private static void testGeneration() {
@@ -21,7 +20,14 @@ public class Main {
 		System.out.println(type);
 	}
 
+	static <T extends Thing> void testStrange() {
+		var list = new readers.RandomReader<Car>(new ReadingStrategy.CarReadingStrategy(), 5).read();
+		Utility.dumpList(list);
+		var ctrl = new controller.controllerStrangeSort<Car>(list);
+		ctrl.run();
+	}
+
 	public static void main(String[] args) {
-		MainController.getInstance().run();
+		testStrange();
 	}
 }
