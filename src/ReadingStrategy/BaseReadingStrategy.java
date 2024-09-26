@@ -21,13 +21,20 @@ public abstract class BaseReadingStrategy {
     // the order of input fields SHOULD be the same as in getNeededFields
 
     public ValidationResult validate(String[] inputfields) {
-        if (fieldsDescriptions.length != inputfields.length) {
+
+        //if (fieldsDescriptions.length != inputfields.length) {
+        //у нас только одно обязательно поле
+        if ((inputfields.length<1) && (inputfields.length>fieldsDescriptions.length)) {
             return new ValidationResult(false, "количество входных полей не совпадает с требуемым. Требуется "
                     + fieldsDescriptions.length + " полей");
         }
+
         StringBuilder errorMessages = new StringBuilder();
         boolean res = true;
-        for (int i = 0; i < fieldsDescriptions.length; ++i) {
+
+        //делаем цикл валидации не по полностью всем полям в классе, а только по полям которые пришли в inputfields
+        //for (int i = 0; i < fieldsDescriptions.length; ++i) {
+        for (int i = 0; i < inputfields.length; ++i) {
             ValidationResult vr = fieldsDescriptions[i].validator.validate(inputfields[i]);
             if (!vr.isValid) {
                 res = false;
