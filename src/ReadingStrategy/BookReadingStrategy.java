@@ -22,9 +22,15 @@ public class BookReadingStrategy extends BaseReadingStrategy {
 
     @Override
     public Thing createThing(String[] inputfields) {
-        return new Book.Builder(inputfields[0])
-                .setPages(Integer.parseInt(inputfields[1]))
-                .setAuthor(inputfields[2]).build();
+
+        return switch (inputfields.length) {
+            case 1 -> new Book.Builder(inputfields[0]).build();
+            case 2 -> new Book.Builder(inputfields[0]).setPages(Integer.parseInt(inputfields[1])).build();
+            case 3 -> new Book.Builder(inputfields[0])
+                    .setPages(Integer.parseInt(inputfields[1]))
+                    .setAuthor(inputfields[2]).build();
+            default -> null;
+        };
     }
 
 }
