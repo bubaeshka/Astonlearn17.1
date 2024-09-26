@@ -97,7 +97,6 @@ public final class Utility {
 			}
 		}
 		return index;
-
 	}
 
 	public static <T> void strangeSort(List<T> lst, ToIntFunction<? super T> keyGetter) {
@@ -111,7 +110,6 @@ public final class Utility {
 				j++;
 			}
 		}
-
 	}
 
 	public static void dumpList(List<?> list) {

@@ -7,11 +7,11 @@ import domain.Thing;
 public class Main {
 	private static void testGeneration() {
 		// testing raw List
-		var list = new readers.RandomReader(new ReadingStrategy.CarReadingStrategy(), 5).read();
+		var list = new readers.RandomReader(new readingStrategy.CarReadingStrategy(), 5).read();
 		Utility.dumpList(list);
-		list = new readers.RandomReader(new ReadingStrategy.BookReadingStrategy(), 5).read();
+		list = new readers.RandomReader(new readingStrategy.BookReadingStrategy(), 5).read();
 		Utility.dumpList(list);
-		list = new readers.RandomReader(new ReadingStrategy.VegetableReadingStrategy(), 5).read();
+		list = new readers.RandomReader(new readingStrategy.VegetableReadingStrategy(), 5).read();
 		Utility.dumpList(list);
 	}
 
@@ -21,8 +21,8 @@ public class Main {
 	}
 
 	static <T extends Thing> void testStrange() {
-		var list = new readers.RandomReader<Car>(new ReadingStrategy.CarReadingStrategy(), 5).read();
-		Utility.dumpList(list);
+		var list = new readers.RandomReader<Car>(new readingstrategy.CarReadingStrategy(), 5).read();
+		utility.Utility.dumpList(list);
 		var ctrl = new controller.ControllerStrangeSort<Car>(list);
 		ctrl.run();
 	}
