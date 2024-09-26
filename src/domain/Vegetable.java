@@ -2,6 +2,8 @@ package domain;
 
 
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Vegetable extends Thing implements Comparable<Vegetable> {
@@ -73,6 +75,15 @@ public class Vegetable extends Thing implements Comparable<Vegetable> {
                 .thenComparing(Vegetable::getName)
                 .compare(this, vegetable);
     }
+    @Override
+	public Map<String, String> getHumanReadableFieldMap(){
+		var res = new HashMap<String, String>();
+		res.put("name", "вид");
+		res.put("weight", "вес");
+		res.put("color", "цвет");
+		return res;
+	}
+
 
     @Override
     public String toString() {

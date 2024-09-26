@@ -2,6 +2,8 @@ package domain;
 
 
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -61,6 +63,14 @@ public class Car extends Thing implements Comparable<Car> {
                 .thenComparing(Car::getName)
                 .compare(this, car);
         }
+
+    public Map<String, String> getHumanReadableFieldMap(){
+		var res = new HashMap<String, String>();
+		res.put("name","модель");
+		res.put("madeYear","год выпуска ");
+		res.put("power","мощность");
+		return res;
+    }
 
     @Override
     public String toString() {
