@@ -1,4 +1,4 @@
-package Validators;
+package validators;
 
 public class IntBoundsValidator extends BaseValidator {
     private final int min, max;

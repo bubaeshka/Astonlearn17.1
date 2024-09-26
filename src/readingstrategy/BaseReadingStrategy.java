@@ -1,7 +1,7 @@
-package ReadingStrategy;
+package readingstrategy;
 
-import Validators.ValidationResult;
 import domain.Thing;
+import validators.ValidationResult;
 
 // this strategy intended to be used by "fillers"
 

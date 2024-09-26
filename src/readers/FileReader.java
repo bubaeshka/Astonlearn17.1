@@ -1,7 +1,7 @@
 package readers;
 
-import ReadingStrategy.BaseReadingStrategy;
 import domain.Thing;
+import readingstrategy.BaseReadingStrategy;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

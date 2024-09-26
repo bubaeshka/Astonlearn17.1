@@ -1,4 +1,4 @@
-package Validators;
+package validators;
 
 public class ValidationResult {
     public final boolean isValid; // default package visibility
