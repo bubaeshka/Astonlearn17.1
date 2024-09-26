@@ -3,6 +3,8 @@ package readingstrategy;
 import domain.Car;
 import domain.Thing;
 
+import java.util.Map;
+
 public class CarReadingStrategy extends BaseReadingStrategy {
 
     public CarReadingStrategy() {
@@ -25,6 +27,11 @@ public class CarReadingStrategy extends BaseReadingStrategy {
         return new Car.Builder(inputfields[0])
                 .setMadeYear(Integer.parseInt(inputfields[1]))
                 .setPower(Integer.parseInt(inputfields[2])).build();
+    }
+
+    @Override
+    public Thing createThing(Map<String, String> inputfields) {
+        return null;
     }
 
 }
