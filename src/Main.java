@@ -3,15 +3,16 @@ import java.util.ArrayList;
 import java.util.List;
 import domain.*;
 import domain.Thing;
+import utility.Utility;
 
 public class Main {
 	private static void testGeneration() {
 		// testing raw List
-		var list = new readers.RandomReader(new readingStrategy.CarReadingStrategy(), 5).read();
+		var list = new readers.RandomReader(new readingstrategy.CarReadingStrategy(), 5).read();
 		Utility.dumpList(list);
-		list = new readers.RandomReader(new readingStrategy.BookReadingStrategy(), 5).read();
+		list = new readers.RandomReader(new readingstrategy.BookReadingStrategy(), 5).read();
 		Utility.dumpList(list);
-		list = new readers.RandomReader(new readingStrategy.VegetableReadingStrategy(), 5).read();
+		list = new readers.RandomReader(new readingstrategy.VegetableReadingStrategy(), 5).read();
 		Utility.dumpList(list);
 	}
 
