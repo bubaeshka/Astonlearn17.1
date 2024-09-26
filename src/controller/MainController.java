@@ -4,13 +4,13 @@ import ReadingStrategy.BookReadingStrategy;
 import ReadingStrategy.CarReadingStrategy;
 import ReadingStrategy.VegetableReadingStrategy;
 import domain.Car;
+import domain.Book;
 import domain.Vegetable;
 import readers.BaseReader;
 import readers.ConsoleReader;
 import readers.RandomReader;
 import utility.Utility;
 
-import java.awt.print.Book;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -51,12 +51,14 @@ public class MainController {
             System.out.println("\nИсходная коллекция: \n" + container);
             Utility.sort(container);
             System.out.println("\nОтсортированная коллекция: \n" + container);
+            boolean isSucceed;
+            do {
+                isSucceed = searchQuery(collectionType);
+            } while (!isSucceed);
 
-            String exit = exit();
-            if (!exit.equalsIgnoreCase("y")) {
-                System.out.println("КОНЕЦ");
-                System.exit(0);
-            }
+            do {
+                isSucceed = continueQuery();
+            } while (!isSucceed);
         }
 
     }
@@ -116,47 +118,57 @@ public class MainController {
         return null;
     }
 
-    /*
-    private Integer enterCreationType() {
-        return Integer.valueOf(prompt("""
-                Введите способ ввода данных:
-                    1. %s;
-                    2. %s;
-                    3. %s
-                """.formatted(CreationType.MANUAL.getName(),
-                    CreationType.FILE.getName(),
-                    CreationType.RANDOM.getName()))
-        );
+    private boolean searchQuery(CollectionType collectionType) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("\nВыполнить поиск объекта?... (y/n)");
+        if (handleQuery(in.nextLine(), false)) {
+            CreationType creationType = enterCreationType();
+            defineReader(collectionType, creationType, 1);
+
+            if (reader == null)  {
+                System.out.println("Проблема с выбором способа ввода");
+                return false;
+            }
+
+            List elementsToSearch = reader.read();
+            for (var element : elementsToSearch) {
+                int elementIndex = switch (collectionType) {
+                    case CollectionType.CAR -> Utility.binarySearch(container, (Car) element);
+                    case CollectionType.BOOK -> Utility.binarySearch(container, (Book) element);
+                    case CollectionType.VEGETABLE -> Utility.binarySearch(container, (Vegetable) element);
+                };
+                if (elementIndex == Integer.MAX_VALUE) {
+                    System.out.println("Коллекция не содержит элемент " + element);
+                    return true;
+                }
+                System.out.println("Индекс элемента " + element + "в коллекции: " + elementIndex);
+            }
+
+        }
+        return true;
     }
-    */
 
-
-    private String exit() {
+    private boolean continueQuery() {
         Scanner in = new Scanner(System.in);
         System.out.println("\nПродолжить?... (y/n)");
-        return in.nextLine();
+        return handleQuery(in.nextLine(), true);
     }
-    /*
-    //метод, который будет определять какого типа будет коллекция
-    private void defineContainer(CollectionType collectionType) {
-        container = switch (collectionType) {
-            case CollectionType.CAR -> new ArrayList<Car>();
-            case CollectionType.BOOK  -> new ArrayList<Book>();
-            case CollectionType.VEGETABLE  -> new ArrayList<Vegetable>();
-        };
-    }
-    */
 
-/*
-        if (typeCollection.equals("Book")) {
-            return list = new ArrayList<Book>();
-        } else if (typeCollection.equals("Car")) {
-//            return list = new ArrayList<domain.Car>();
-        } else if (typeCollection.equals("Root vegetable")) {
-//            return new ArrayList<Vegetable>();
+    private boolean handleQuery(String answer, boolean exitIfNo) {
+        final String[] posAnsSynonyms = new String[]{"д", "да", "y", "yes"};
+        final String[] negAnsSynonyms = new String[]{"н", "нет", "n", "no"};
+
+        if (!List.of(posAnsSynonyms).contains(answer)
+                && !List.of(negAnsSynonyms).contains(answer)) {
+            return false;
+        } else if (!List.of(posAnsSynonyms).contains(answer)) {
+            if (exitIfNo) {
+                System.out.println("КОНЕЦ");
+                System.exit(0);
+            } else return false;
         }
-        return null;
-    } */
+        return true;
+    }
 
     // определение типа создания коллекции(чтение из файла, рандомное создание, ввод с консоли)
     private void defineReader(CollectionType collectionType, CreationType creationType, int elementsNum) {
@@ -171,23 +183,6 @@ public class MainController {
             case CreationType.RANDOM -> new RandomReader<>(readingStrategy, elementsNum);
             default -> null;
         };
-        /*
-        if (typeCreate.equals("Read file.")) {
-            //вызов метода читалки из файла
-        } else if (typeCreate.equals("Random creating.")) {
-            //вызов метода создания рандомных элементов
-        }
-        else if (typeCreate.equals("Console input. ")) {
-            // читать с консоли
-        } */
     }
-
-    //заполняет коллекцию элементами выбранного класса
-    private void fillCollection(List list, String typeCollection,int countElement) {
-
-    }
-
-
-
 
 }
