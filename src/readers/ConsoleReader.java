@@ -36,7 +36,8 @@ public class ConsoleReader <T extends Thing> extends BaseReader<T>{
                     throw new RuntimeException(e);
                 }
             }
-            if (strategy.validate(fields.toArray(new String[fields.size()])).isValid) collection.add(strategy.createThing(fields));
+            String[] mas_fields = fields.toArray(new String[fields.size()]);
+            if (strategy.validate(mas_fields).isValid) collection.add(strategy.createThing(mas_fields));
         } while(!inputstring.equals("*"));
 
         return (List<T>) collection;
