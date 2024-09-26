@@ -17,7 +17,7 @@ public class Main {
 
 	public static void main(String[] args) {
 	//	testGeneration();
-        var list = new readers.ConsoleReader(new ReadingStrategy.CarReadingStrategy()).read();
+        var list = new readers.ConsoleReader(new ReadingStrategy.BookReadingStrategy()).read();
 		for (var item : list) System.out.println(item);
 	}
 }

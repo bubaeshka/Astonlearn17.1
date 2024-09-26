@@ -3,6 +3,8 @@ package ReadingStrategy;
 import domain.Vegetable;
 import domain.Thing;
 
+import java.util.Map;
+
 public class VegetableReadingStrategy extends BaseReadingStrategy {
 
     public VegetableReadingStrategy() {
@@ -26,5 +28,11 @@ public class VegetableReadingStrategy extends BaseReadingStrategy {
                 .setWeight(Integer.parseInt(inputfields[1]))
                 .setColor(inputfields[2]).build();
     }
+
+    @Override
+    public Thing createThing(Map<String, String> inputfields) {
+        return null;
+    }
+
 
 }
