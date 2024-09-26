@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+
+import ReadingStrategy.BaseReadingStrategy;
 import domain.*;
 
 public class Main {
@@ -14,6 +16,8 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		testGeneration();
+	//	testGeneration();
+        var list = new readers.ConsoleReader(new ReadingStrategy.CarReadingStrategy()).read();
+		for (var item : list) System.out.println(item);
 	}
 }

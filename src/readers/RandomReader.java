@@ -8,7 +8,7 @@ import ReadingStrategy.BaseReadingStrategy;
 import ReadingStrategy.FieldDescription;
 import domain.Thing;
 
-public class RandomReader<T> extends BaseReader {
+public class RandomReader<T extends Thing> extends BaseReader<T> {
     private int count;
     private Random rng;
 
@@ -60,7 +60,8 @@ public class RandomReader<T> extends BaseReader {
             }
             
             collection.add(strategy.createThing(fields));
-            collection.add((Thing) strategy.createThing(fields));
+            //какой то странный дубль?
+            //collection.add((Thing) strategy.createThing(fields));
 
         }
         return (List<T>) collection;
