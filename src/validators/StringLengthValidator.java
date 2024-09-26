@@ -1,4 +1,4 @@
-package Validators;
+package validators;
 
 public class StringLengthValidator extends BaseValidator {
     private int maxLength;

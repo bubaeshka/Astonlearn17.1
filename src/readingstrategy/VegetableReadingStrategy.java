@@ -1,4 +1,4 @@
-package ReadingStrategy;
+package readingstrategy;
 
 import domain.Vegetable;
 import domain.Thing;
@@ -8,11 +8,11 @@ public class VegetableReadingStrategy extends BaseReadingStrategy {
     public VegetableReadingStrategy() {
         fieldsDescriptions = new FieldDescription[] {
                 new FieldDescription("название", FieldDescription.Type.STRING,
-                        new Validators.StringLengthValidator(32)),
+                        new validators.StringLengthValidator(32)),
                 new FieldDescription("вес", FieldDescription.Type.INT,
-                        new Validators.IntBoundsValidator(100, 10180)),
+                        new validators.IntBoundsValidator(100, 10180)),
                 new FieldDescription("цвет", FieldDescription.Type.STRING,
-                        new Validators.StringLengthValidator(32)) };
+                        new validators.StringLengthValidator(32)) };
     }
 
     @Override

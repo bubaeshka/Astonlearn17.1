@@ -1,4 +1,4 @@
-package ReadingStrategy;
+package readingstrategy;
 
 import domain.Book;
 import domain.Thing;
@@ -8,11 +8,11 @@ public class BookReadingStrategy extends BaseReadingStrategy {
     public BookReadingStrategy() {
         fieldsDescriptions = new FieldDescription[] {
                 new FieldDescription("название", FieldDescription.Type.STRING,
-                        new Validators.StringLengthValidator(64)),
+                        new validators.StringLengthValidator(64)),
                 new FieldDescription("количество страниц", FieldDescription.Type.INT,
-                        new Validators.IntBoundsValidator(2, 2024)),
+                        new validators.IntBoundsValidator(2, 2024)),
                 new FieldDescription("автор", FieldDescription.Type.STRING,
-                        new Validators.StringLengthValidator(45)) };
+                        new validators.StringLengthValidator(45)) };
     }
 
     @Override

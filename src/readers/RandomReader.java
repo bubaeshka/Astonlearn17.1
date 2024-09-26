@@ -4,9 +4,9 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
-import ReadingStrategy.BaseReadingStrategy;
-import ReadingStrategy.FieldDescription;
 import domain.Thing;
+import readingstrategy.BaseReadingStrategy;
+import readingstrategy.FieldDescription;
 
 public class RandomReader<T extends Thing> extends BaseReader<T> {
     private int count;
@@ -29,14 +29,14 @@ public class RandomReader<T extends Thing> extends BaseReader<T> {
 
     String generate(FieldDescription fd) {
         if (fd.type == FieldDescription.Type.INT) {
-            if (fd.validator instanceof Validators.IntBoundsValidator) {
-                int min = ((Validators.IntBoundsValidator) fd.validator).getMin();
-                int max = ((Validators.IntBoundsValidator) fd.validator).getMax();
+            if (fd.validator instanceof validators.IntBoundsValidator) {
+                int min = ((validators.IntBoundsValidator) fd.validator).getMin();
+                int max = ((validators.IntBoundsValidator) fd.validator).getMax();
                 return String.valueOf(rng.nextInt(max - min + 1) + min);
             }
             return String.valueOf((int) (Math.random() * 100));
         } else if (fd.type == FieldDescription.Type.STRING) {
-            int maxLenth = ((Validators.StringLengthValidator) fd.validator).getMaxLength();
+            int maxLenth = ((validators.StringLengthValidator) fd.validator).getMaxLength();
             int minLenth = Math.min(maxLenth, 3);
             int len = rng.nextInt(maxLenth - minLenth + 1) + minLenth;
             return generateRandomString(len);

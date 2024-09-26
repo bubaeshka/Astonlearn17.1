@@ -1,14 +1,14 @@
 package controller;
 
-import ReadingStrategy.BookReadingStrategy;
-import ReadingStrategy.CarReadingStrategy;
-import ReadingStrategy.VegetableReadingStrategy;
 import domain.Car;
 import domain.Book;
 import domain.Vegetable;
 import readers.BaseReader;
 import readers.ConsoleReader;
 import readers.RandomReader;
+import readingstrategy.BookReadingStrategy;
+import readingstrategy.CarReadingStrategy;
+import readingstrategy.VegetableReadingStrategy;
 import utility.Utility;
 
 import java.util.*;

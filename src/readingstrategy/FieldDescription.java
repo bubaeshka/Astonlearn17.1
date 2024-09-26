@@ -1,6 +1,6 @@
-package ReadingStrategy;
+package readingstrategy;
 
-import Validators.BaseValidator;
+import validators.BaseValidator;
 
 
 public class FieldDescription {
