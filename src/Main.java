@@ -30,8 +30,6 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		MainController md = new MainController();
-		md.run();
-
+		MainController.getInstance().run();
 	}
 }

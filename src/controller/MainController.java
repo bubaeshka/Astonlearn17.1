@@ -5,6 +5,7 @@ import domain.Book;
 import domain.Vegetable;
 import readers.BaseReader;
 import readers.ConsoleReader;
+import readers.FileReader;
 import readers.RandomReader;
 import readingstrategy.BookReadingStrategy;
 import readingstrategy.CarReadingStrategy;
@@ -179,7 +180,7 @@ public class MainController {
         };
         reader = switch (creationType) {
             case CreationType.MANUAL -> new ConsoleReader<>(readingStrategy);
-            //case CreationType.FILE  -> new FileReader<>();
+            case CreationType.FILE  -> new FileReader<>(readingStrategy, elementsNum);
             case CreationType.RANDOM -> new RandomReader<>(readingStrategy, elementsNum);
             default -> null;
         };
