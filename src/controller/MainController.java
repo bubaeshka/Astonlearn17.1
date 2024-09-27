@@ -182,7 +182,9 @@ public class MainController {
         };
         reader = switch (creationType) {
             case CreationType.MANUAL -> new ConsoleReader<>(readingStrategy);
+
             case CreationType.FILE -> new FileReader<>(readingStrategy, elementsNum);
+
             case CreationType.RANDOM -> new RandomReader<>(readingStrategy, elementsNum);
             default -> null;
         };

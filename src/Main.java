@@ -16,22 +16,26 @@ public class Main {
 		list = new readers.RandomReader(new readingstrategy.VegetableReadingStrategy(), 5).read();
 		Utility.dumpList(list);
 	}
-
+  
 	static <T extends Thing> void prompt(T vart) {
 		String type = vart.getClass().getSimpleName();
 		System.out.println(type);
 	}
 
-	static <T extends Thing> void testStrange() {
+	static  void testStrange() {
 		var list = new readers.RandomReader<Car>(new readingstrategy.CarReadingStrategy(), 5).read();
 		utility.Utility.dumpList(list);
 		var ctrl = new controller.ControllerStrangeSort<Car>(list);
 		ctrl.run();
 	}
+	static void testSort() {
+		var list = new readers.RandomReader<Car>(new readingstrategy.CarReadingStrategy(), 5).read();
+		utility.Utility.dumpList(list);
+		var ctrl = new controller.SortingCtrl<Car>(list);
+		ctrl.run();
+	}
 
 	public static void main(String[] args) {
-		MainController md = new MainController();
-		md.run();
-
+		MainController.getInstance().run();
 	}
 }
