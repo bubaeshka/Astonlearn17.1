@@ -8,7 +8,7 @@ public class CarReadingStrategy extends BaseReadingStrategy {
     public CarReadingStrategy() {
         fieldsDescriptions = new FieldDescription[] {
                 new FieldDescription("модель", FieldDescription.Type.STRING,
-                        new validators.StringLengthValidator(10)),
+                        new validators.StringLengthValidator(50)),
                 new FieldDescription("год выпуска", FieldDescription.Type.INT,
                         new validators.IntBoundsValidator(1880, 2024)),
                 new FieldDescription("мощность", FieldDescription.Type.INT,

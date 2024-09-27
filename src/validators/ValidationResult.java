@@ -9,4 +9,6 @@ public class ValidationResult {
         this.isValid = isValid;
         this.errorMessage = errorMessage;
     }
+
+
 }

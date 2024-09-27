@@ -5,6 +5,7 @@ import domain.Book;
 import domain.Vegetable;
 import readers.BaseReader;
 import readers.ConsoleReader;
+import readers.FileReader;
 import readers.RandomReader;
 import readingstrategy.BookReadingStrategy;
 import readingstrategy.CarReadingStrategy;
@@ -90,13 +91,12 @@ public class MainController {
 
     private Integer enterElementsNumber() {
         try {
-        return Integer.valueOf(prompt("Введите количество объектов: "));
+            return Integer.valueOf(prompt("Введите количество объектов: "));
         } catch (java.lang.NumberFormatException e) {
             System.out.println("Некорректное количество объектов. Попробуйте снова.");
         }
         return null;
     }
-
 
 
     private CreationType enterCreationType() {
@@ -118,9 +118,10 @@ public class MainController {
         return null;
     }
 
-    private boolean searchQuery(CollectionType collectionType) {
+        private boolean searchQuery(CollectionType collectionType) {
         Scanner in = new Scanner(System.in);
         System.out.println("\nВыполнить поиск объекта?... (y/n)");
+
         if (handleQuery(in.nextLine(), false)) {
             CreationType creationType = enterCreationType();
             defineReader(collectionType, creationType, 1);
@@ -148,6 +149,8 @@ public class MainController {
         return true;
     }
 
+
+
     private boolean continueQuery() {
         Scanner in = new Scanner(System.in);
         System.out.println("\nПродолжить?... (y/n)");
@@ -174,12 +177,14 @@ public class MainController {
     private void defineReader(CollectionType collectionType, CreationType creationType, int elementsNum) {
         var readingStrategy = switch (collectionType) {
             case CollectionType.CAR -> new CarReadingStrategy();
-            case CollectionType.BOOK  -> new BookReadingStrategy();
-            case CollectionType.VEGETABLE  -> new VegetableReadingStrategy();
+            case CollectionType.BOOK -> new BookReadingStrategy();
+            case CollectionType.VEGETABLE -> new VegetableReadingStrategy();
         };
         reader = switch (creationType) {
             case CreationType.MANUAL -> new ConsoleReader<>(readingStrategy);
-            //case CreationType.FILE  -> new FileReader<>();
+
+            case CreationType.FILE -> new FileReader<>(readingStrategy, elementsNum);
+
             case CreationType.RANDOM -> new RandomReader<>(readingStrategy, elementsNum);
             default -> null;
         };

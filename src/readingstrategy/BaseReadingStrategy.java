@@ -22,9 +22,8 @@ public abstract class BaseReadingStrategy {
 
     public ValidationResult validate(String[] inputfields) {
 
-        //if (fieldsDescriptions.length != inputfields.length) {
-        //у нас только одно обязательно поле
-        if ((inputfields.length<1) && (inputfields.length>fieldsDescriptions.length)) {
+        if (fieldsDescriptions.length != inputfields.length) {
+
             return new ValidationResult(false, "количество входных полей не совпадает с требуемым. Требуется "
                     + fieldsDescriptions.length + " полей");
         }
@@ -32,9 +31,8 @@ public abstract class BaseReadingStrategy {
         StringBuilder errorMessages = new StringBuilder();
         boolean res = true;
 
-        //делаем цикл валидации не по полностью всем полям в классе, а только по полям которые пришли в inputfields
-        //for (int i = 0; i < fieldsDescriptions.length; ++i) {
-        for (int i = 0; i < inputfields.length; ++i) {
+
+        for (int i = 0; i < fieldsDescriptions.length; ++i) {
             ValidationResult vr = fieldsDescriptions[i].validator.validate(inputfields[i]);
             if (!vr.isValid) {
                 res = false;
@@ -43,6 +41,7 @@ public abstract class BaseReadingStrategy {
                 errorMessages.append(": ");
                 errorMessages.append(vr.errorMessage);
                 errorMessages.append("\n");
+
             }
         }
         return new ValidationResult(res, errorMessages.toString());
