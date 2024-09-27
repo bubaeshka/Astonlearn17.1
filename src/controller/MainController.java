@@ -2,6 +2,7 @@ package controller;
 
 import domain.Car;
 import domain.Book;
+import domain.Thing;
 import domain.Vegetable;
 import readers.BaseReader;
 import readers.ConsoleReader;
@@ -63,6 +64,7 @@ public class MainController {
             boolean isSucceed;
             do {
                 isSucceed = searchQuery(collectionType);
+
             } while (!isSucceed);
 
             do {
@@ -146,7 +148,7 @@ public class MainController {
         return null;
     }
 
-        private boolean searchQuery(CollectionType collectionType) {
+    private boolean searchQuery(CollectionType collectionType) {
         Scanner in = new Scanner(System.in);
         System.out.println("\nВыполнить поиск объекта?... (y/n)");
 
@@ -177,8 +179,6 @@ public class MainController {
         return true;
     }
 
-
-
     private boolean continueQuery() {
         Scanner in = new Scanner(System.in);
         System.out.println("\nПродолжить?... (y/n)");
@@ -208,6 +208,22 @@ public class MainController {
         } while (elementsNum == null);
         return elementsNum;
     }
+
+    private void callKeySortController(CollectionType collectionType) {
+		switch (collectionType) {
+        case CollectionType.CAR : new SortingCtrl<Car>(container).run();break;
+		case CollectionType.BOOK : new SortingCtrl<Book>(container).run();break;
+		case CollectionType.VEGETABLE : new SortingCtrl<Vegetable>(container).run();break;
+		}
+	}
+
+    private void callStrangSortController(CollectionType collectionType) {
+		switch (collectionType) {
+        case CollectionType.CAR : new ControllerStrangeSort<Car>(container).run();break;
+		case CollectionType.BOOK : new ControllerStrangeSort<Book>(container).run();break;
+		case CollectionType.VEGETABLE : new ControllerStrangeSort<Vegetable>(container).run();break;
+		}
+	}
 
     // определение типа создания коллекции(чтение из файла, рандомное создание, ввод с консоли)
     private void defineReader(CollectionType collectionType, CreationType creationType) {
