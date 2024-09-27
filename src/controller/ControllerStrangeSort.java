@@ -33,16 +33,16 @@ public final class ControllerStrangeSort<T extends Thing> {
 	ToIntFunction<? extends Thing> promptKey(HashMap<String, ToIntFunction<? extends Thing>> typedKeyGettersStorage) {
 		try (Scanner in = new Scanner(System.in)) {
 			System.out.println("выберите по какому ключу осуществить странную сортировку:");
-			var keylist = new ArrayList<>(typedKeyGettersStorage.keySet());
-			if (keylist.size() == 0) {
+			var keyList = new ArrayList<>(typedKeyGettersStorage.keySet());
+			if (keyList.size() == 0) {
 				System.out.println("Нет ни одного ключа для сортировки");
 				return null;
 			}
-			if (keylist.size() == 1) {
-				return typedKeyGettersStorage.get(keylist.get(0));
+			if (keyList.size() == 1) {
+				return typedKeyGettersStorage.get(keyList.get(0));
 			}
-			for (int i = 0; i < keylist.size(); i++) {
-				System.out.println(i + " - " + keylist.get(i));
+			for (int i = 0; i < keyList.size(); i++) {
+				System.out.println(i + " - " + keyList.get(i));
 			}
 			while (true) {
 				System.out.println("введите номер ключа");
@@ -54,8 +54,8 @@ public final class ControllerStrangeSort<T extends Thing> {
 					in.nextLine();
 					key = -1;
 				}
-				if (key >= 0 && key < keylist.size()) {
-					return typedKeyGettersStorage.get(keylist.get(key));
+				if (key >= 0 && key < keyList.size()) {
+					return typedKeyGettersStorage.get(keyList.get(key));
 				}
 			}
 		}
