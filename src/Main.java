@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import domain.*;
 import domain.Thing;
+import readers.ConsoleReader;
 import utility.Utility;
 
 public class Main {
@@ -29,6 +30,8 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		testStrange();
+		MainController md = new MainController();
+		md.run();
+
 	}
 }
