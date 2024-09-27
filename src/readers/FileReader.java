@@ -28,7 +28,7 @@ public class FileReader<T extends Thing> extends BaseReader<T> {
                 String absoluteFilePath = System.getProperty("user.dir")
                         + FileSystems.getDefault().getSeparator()
                         + relativePath;
-                System.out.println(absoluteFilePath);
+                System.out.println("Путь к файлу: " + absoluteFilePath);
                 fileStrings = readFile(absoluteFilePath);
             } catch (RuntimeException e) {
                 System.out.println("Файл не найден. Попробуйте еще раз");
