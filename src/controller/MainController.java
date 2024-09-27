@@ -192,6 +192,14 @@ public class MainController {
 		}
 	}
 
+    private void callAskUserForComparator(CollectionType collectionType,String message) {
+		switch (collectionType) {
+        case CollectionType.CAR : new CtrlAskUserForComparator<Car>("Car").run(message);break;
+		case CollectionType.BOOK : new CtrlAskUserForComparator<Book>("Book").run(message);break;
+		case CollectionType.VEGETABLE : new CtrlAskUserForComparator<Vegetable>("Vegetable").run(message);break;
+		}
+	}
+
     // определение типа создания коллекции(чтение из файла, рандомное создание, ввод с консоли)
     private void defineReader(CollectionType collectionType, CreationType creationType) {
         var readingStrategy = switch (collectionType) {
