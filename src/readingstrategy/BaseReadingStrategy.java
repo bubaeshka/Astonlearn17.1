@@ -41,6 +41,7 @@ public abstract class BaseReadingStrategy {
                 errorMessages.append(": ");
                 errorMessages.append(vr.errorMessage);
                 errorMessages.append("\n");
+
             }
         }
         return new ValidationResult(res, errorMessages.toString());

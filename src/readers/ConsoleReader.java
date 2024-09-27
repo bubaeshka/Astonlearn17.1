@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ConsoleReader <T extends Thing> extends BaseReader<T>{
@@ -38,7 +39,9 @@ public class ConsoleReader <T extends Thing> extends BaseReader<T>{
                 }
             }
             String[] mas_fields = fields.toArray(new String[fields.size()]);
-            if (strategy.validate(mas_fields).isValid) collection.add(strategy.createThing(mas_fields));
+            if (strategy.validate(mas_fields).isValid) {
+                collection.add(strategy.createThing(mas_fields));
+            }
         } while(!inputstring.equals("*"));
 
         return (List<T>) collection;
