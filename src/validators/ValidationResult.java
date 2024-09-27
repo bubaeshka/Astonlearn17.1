@@ -8,5 +8,12 @@ public class ValidationResult {
         super();
         this.isValid = isValid;
         this.errorMessage = errorMessage;
+        printResultValidation();
     }
+    private void  printResultValidation(){
+        if(!errorMessage.isEmpty()){
+            System.out.println(errorMessage);
+        }
+    }
+
 }

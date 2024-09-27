@@ -121,6 +121,7 @@ public class MainController {
     private boolean searchQuery(CollectionType collectionType) {
         Scanner in = new Scanner(System.in);
         System.out.println("\nВыполнить поиск объекта?... (y/n)");
+
         if (handleQuery(in.nextLine(), false)) {
             CreationType creationType = enterCreationType();
             defineReader(collectionType, creationType, 1);
