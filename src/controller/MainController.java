@@ -16,6 +16,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class MainController {
+    private final int SORTING_COMMON = 1;
+    private final int SORTING_STRANGE = 2;
+
     private List container;
     private BaseReader reader;
 
@@ -45,7 +48,17 @@ public class MainController {
             if (reader != null) container = reader.read();
 
             System.out.println("\nИсходная коллекция: \n" + container);
-            Utility.sort(container);
+
+            int mode = selectSortingMode();
+            switch (mode) {
+                case 1 -> Utility.sort(container);
+                case 2 -> {
+                    Utility.dumpList(container);
+                    var ctrl = new controller.SortingCtrl<>(container);
+                    ctrl.run();
+                }
+            }
+            //Utility.sort(container);
             System.out.println("\nОтсортированная коллекция: \n" + container);
             boolean isSucceed;
             do {
@@ -63,6 +76,26 @@ public class MainController {
         Scanner in = new Scanner(System.in);
         System.out.printf(message);
         return in.nextLine();
+    }
+
+    private int selectSortingMode() {
+        int mode = 0;
+        do {
+            try {
+                mode = Integer.valueOf(prompt("""
+                           Выберите режим сортировки:
+                            1. Обычный
+                            2. "Странный"
+                           """));
+                if (mode < 1 || mode > 2) {
+                    System.out.println("Некорректное числовое значение. Попробуйте снова.");
+                }
+            } catch (java.lang.NumberFormatException e) {
+                System.out.println("Некорректный формат данных. Попробуйте снова.");
+            }
+        } while (mode == 0);
+
+        return mode;
     }
 
     private CollectionType enterCollectionType() {
