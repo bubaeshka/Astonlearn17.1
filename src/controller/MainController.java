@@ -2,6 +2,7 @@ package controller;
 
 import domain.Car;
 import domain.Book;
+import domain.Thing;
 import domain.Vegetable;
 import readers.BaseReader;
 import readers.ConsoleReader;
@@ -55,6 +56,7 @@ public class MainController {
             boolean isSucceed;
             do {
                 isSucceed = searchQuery(collectionType);
+
             } while (!isSucceed);
 
             do {
@@ -118,7 +120,7 @@ public class MainController {
         return null;
     }
 
-        private boolean searchQuery(CollectionType collectionType) {
+    private boolean searchQuery(CollectionType collectionType) {
         Scanner in = new Scanner(System.in);
         System.out.println("\nВыполнить поиск объекта?... (y/n)");
 
@@ -148,8 +150,6 @@ public class MainController {
         }
         return true;
     }
-
-
 
     private boolean continueQuery() {
         Scanner in = new Scanner(System.in);

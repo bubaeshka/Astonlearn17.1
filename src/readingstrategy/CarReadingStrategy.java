@@ -1,5 +1,6 @@
 package readingstrategy;
 
+
 import domain.Car;
 import domain.Thing;
 
@@ -22,9 +23,17 @@ public class CarReadingStrategy extends BaseReadingStrategy {
 
     @Override
     public Thing createThing(String[] inputfields) {
-        return new Car.Builder(inputfields[0])
-                .setMadeYear(Integer.parseInt(inputfields[1]))
-                .setPower(Integer.parseInt(inputfields[2])).build();
+//        return new Car.Builder(inputfields[0])
+//                .setMadeYear(Integer.parseInt(inputfields[1]))
+//                .setPower(Integer.parseInt(inputfields[2])).build();
+        return switch (inputfields.length) {
+            case 1 -> new Car.Builder(inputfields[0]).build();
+            case 2 -> new Car.Builder(inputfields[0]).setMadeYear(Integer.parseInt(inputfields[1])).build();
+            case 3 -> new Car.Builder(inputfields[0])
+                    .setMadeYear(Integer.parseInt(inputfields[1]))
+                    .setPower(Integer.parseInt(inputfields[2])).build();
+            default -> null;
+        };
     }
 
 }

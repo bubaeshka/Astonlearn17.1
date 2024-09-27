@@ -25,6 +25,14 @@ public class Car extends Thing implements Comparable<Car> {
         this.power = carBuilder.power;
     }
 
+    public void setMadeYear(int madeYear) {
+        this.madeYear = madeYear;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
     public int getMadeYear() {
         return madeYear;
     }
