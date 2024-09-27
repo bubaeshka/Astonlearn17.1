@@ -36,17 +36,12 @@ public class MainController {
                 collectionType = enterCollectionType();
             } while (collectionType == null);
 
-            Integer elementsNum;
-            do {
-                elementsNum = enterElementsNumber();
-            } while (elementsNum == null);
-
             CreationType creationType;
             do {
                 creationType = enterCreationType();
             } while (creationType == null);
 
-            defineReader(collectionType, creationType, elementsNum);
+            defineReader(collectionType, creationType);
             if (reader != null) container = reader.read();
 
             System.out.println("\nИсходная коллекция: \n" + container);
@@ -124,7 +119,7 @@ public class MainController {
 
         if (handleQuery(in.nextLine(), false)) {
             CreationType creationType = enterCreationType();
-            defineReader(collectionType, creationType, 1);
+            defineReader(collectionType, creationType);
 
             if (reader == null)  {
                 System.out.println("Проблема с выбором способа ввода");
@@ -142,7 +137,7 @@ public class MainController {
                     System.out.println("Коллекция не содержит элемент " + element);
                     return true;
                 }
-                System.out.println("Индекс элемента " + element + "в коллекции: " + elementIndex);
+                System.out.println("Индекс элемента " + element + " в коллекции: " + elementIndex);
             }
 
         }
@@ -173,8 +168,16 @@ public class MainController {
         return true;
     }
 
+    private Integer getValidElementsNumber() {
+        Integer elementsNum;
+        do {
+            elementsNum = enterElementsNumber();
+        } while (elementsNum == null);
+        return elementsNum;
+    }
+
     // определение типа создания коллекции(чтение из файла, рандомное создание, ввод с консоли)
-    private void defineReader(CollectionType collectionType, CreationType creationType, int elementsNum) {
+    private void defineReader(CollectionType collectionType, CreationType creationType) {
         var readingStrategy = switch (collectionType) {
             case CollectionType.CAR -> new CarReadingStrategy();
             case CollectionType.BOOK -> new BookReadingStrategy();
@@ -183,10 +186,9 @@ public class MainController {
         reader = switch (creationType) {
             case CreationType.MANUAL -> new ConsoleReader<>(readingStrategy);
 
-            case CreationType.FILE -> new FileReader<>(readingStrategy, elementsNum);
+            case CreationType.FILE -> new FileReader<>(readingStrategy);
 
-            case CreationType.RANDOM -> new RandomReader<>(readingStrategy, elementsNum);
-            default -> null;
+            case CreationType.RANDOM -> new RandomReader<>(readingStrategy, getValidElementsNumber());
         };
     }
 

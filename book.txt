@@ -1,0 +1,81 @@
+To Kill a Mockingbird,281,Harper Lee
+The Great Gatsby,218,F. Scott Fitzgerald
+1984,328,George Orwell
+Pride and Prejudice,320,Jane Austen
+The Catcher in the Rye,272,J.D. Salinger
+The Lord of the Rings,1216,J.R.R. Tolkien
+The Hunger Games,384,Suzanne Collins
+Harry Potter and the Philosopher's Stone,320,J.K. Rowling
+The Da Vinci Code,454,Dan Brown
+The Alchemist,208,Paulo Coelho
+The Picture of Dorian Gray,272,Oscar Wilde
+War and Peace,1225,Leo Tolstoy
+Moby-Dick,544,Herman Melville
+The Count of Monte Cristo,1276,Alexandre Dumas
+The Adventures of Huckleberry Finn,320,Mark Twain
+The Scarlet Letter,240,Nathaniel Hawthorne
+The Grapes of Wrath,464,John Steinbeck
+Alice's Adventures in Wonderland,192,Lewis Carroll
+The Wizard of Oz,272,L. Frank Baum
+The Canterbury Tales,432,Geoffrey Chaucer
+Wuthering Heights,320,Emily Brontë
+Jane Eyre,416,Charlotte Brontë
+The Sound and the Fury,272,William Faulkner
+The Sun Also Rises,256,Ernest Hemingway
+A Farewell to Arms,336,Ernest Hemingway
+The Old Man and the Sea,127,Ernest Hemingway
+The Great Expectations,544,Charles Dickens
+Oliver Twist,416,Charles Dickens
+David Copperfield,832,Charles Dickens
+The Adventures of Tom Sawyer,272,Mark Twain
+The Prince and the Pauper,240,Mark Twain
+The Hunchback of Notre-Dame,416,Victor Hugo
+Les Misérables,1463,Victor Hugo
+The Three Musketeers,416,Alexandre Dumas
+The Count of Monte Cristo,1276,Alexandre Dumas
+The Man in the Iron Mask,272,Alexandre Dumas
+The Woman in White,416,Wilkie Collins
+The Moonstone,432,Wilkie Collins
+The Last of the Mohicans,416,James Fenimore Cooper
+The Deerslayer,272,James Fenimore Cooper
+The Pathfinder,416,James Fenimore Cooper
+The Pioneers,432,James Fenimore Cooper
+The Prairie,272,James Fenimore Cooper
+The Spy,416,James Fenimore Cooper
+The Red and the Black,432,Stendhal
+The Charterhouse of Parma,416,Stendhal
+Madame Bovary,272,Gustave Flaubert
+Salammbô,416,Gustave Flaubert
+The Temptation of St. Anthony,432,Gustave Flaubert
+Bouvard and Pécuchet,272,Gustave Flaubert
+The Red Badge of Courage,192,Stephen Crane
+The Call of the Wild,240,Jack London
+White Fang,272,Jack London
+The Sea-Wolf,416,Jack London
+Martin Eden,432,Jack London
+The Iron Heel,272,Jack London
+The Valley of the Moon,416,Jack London
+The Mutiny of the Elsinore,272,Jack London
+The Cruise of the Snark,240,Jack London
+The Jungle Book,272,Rudyard Kipling
+Kim,416,Rudyard Kipling
+Captains Courageous,272,Rudyard Kipling
+The Light That Failed,240,Rudyard Kipling
+Nostromo,432,Joseph Conrad
+Heart of Darkness,272,Joseph Conrad
+Lord Jim,416,Joseph Conrad
+The Secret Agent,272,Joseph Conrad
+The Nigger of the Narcissus,240,Joseph Conrad
+Almayer's Folly,272,Joseph Conrad
+An Outcast of the Islands,416,Joseph Conrad
+The Rover,272,Joseph Conrad
+The Rescue,240,Joseph Conrad
+The Arrow of Gold,272,Joseph Conrad
+The Nature of a Crime,240,Joseph Conrad
+The Shadow-Line,272,Joseph Conrad
+Chance,416,Joseph Conrad
+Victory,272,Joseph Conrad
+The Secret Sharer,240,Joseph Conrad
+Under Western Eyes,416,Joseph Conrad
+The Duel,272,Joseph Conrad
+The Point of Honor,240,Joseph Conrad
