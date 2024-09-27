@@ -37,9 +37,7 @@ public abstract class BaseReadingStrategy {
             if (!vr.isValid) {
                 res = false;
                 errorMessages.append("ошибка в поле ");
-                errorMessages.append(" \" ");
                 errorMessages.append(fieldsDescriptions[i].name);
-                errorMessages.append(" \" ");
                 errorMessages.append(": ");
                 errorMessages.append(vr.errorMessage);
                 errorMessages.append("\n");
