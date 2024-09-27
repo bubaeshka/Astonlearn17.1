@@ -52,14 +52,10 @@ public class MainController {
 
             int mode = selectSortingMode();
             switch (mode) {
-                case 1 -> Utility.sort(container);
-                case 2 -> {
-                    Utility.dumpList(container);
-                    var ctrl = new controller.SortingCtrl<>(container);
-                    ctrl.run();
+                case SORTING_COMMON -> callKeySortController(collectionType);
+                case SORTING_STRANGE -> callStrangeSortController(collectionType);
                 }
-            }
-            //Utility.sort(container);
+
             System.out.println("\nОтсортированная коллекция: \n" + container);
             boolean isSucceed;
             do {
@@ -89,7 +85,7 @@ public class MainController {
                             1. Обычный
                             2. "Странный"
                            """));
-                if (mode < 1 || mode > 2) {
+                if (mode < SORTING_COMMON || mode > SORTING_STRANGE) {
                     System.out.println("Некорректное числовое значение. Попробуйте снова.");
                 }
             } catch (java.lang.NumberFormatException e) {
@@ -176,6 +172,7 @@ public class MainController {
             }
 
         }
+        in.close();
         return true;
     }
 
@@ -217,7 +214,7 @@ public class MainController {
 		}
 	}
 
-    private void callStrangSortController(CollectionType collectionType) {
+    private void callStrangeSortController(CollectionType collectionType) {
 		switch (collectionType) {
         case CollectionType.CAR : new ControllerStrangeSort<Car>(container).run();break;
 		case CollectionType.BOOK : new ControllerStrangeSort<Book>(container).run();break;
