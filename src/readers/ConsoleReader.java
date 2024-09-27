@@ -24,6 +24,7 @@ public class ConsoleReader <T extends Thing> extends BaseReader<T>{
         String inputstring = "*";
         ArrayList<String> fields = new ArrayList<>();
         do {
+            fields.clear();
             System.out.println("Для выхода ведите *");
             for (int i = 0; i<strategy.getNeededFields().length; i++) {
                 System.out.println("Ведите "+strategy.getNeededFields()[i].name);
