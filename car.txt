@@ -1,0 +1,29 @@
+Ford Mustang,1965,271
+Chevrolet Camaro,1967,295
+Dodge Charger,1968,375
+Porsche 911,1963,130
+Toyota Corolla,1966,90
+Volkswagen Beetle,1955,36
+Nissan GT-R,2007,480
+BMW M3,2008,414
+Mercedes-Benz S-Class,2013,577
+Audi R8,2007,420
+Lamborghini Gallardo,2003,493
+Ferrari 458 Italia,2009,562
+Mazda RX-7,1992,255
+Subaru Impreza,1993,155
+Honda Civic,1991,125
+Mitsubishi Lancer,2003,215
+Jeep Wrangler,1997,193
+Land Rover Defender,1990,182
+Chrysler 300,2005,340
+Dodge Viper,2003,500
+Ford F-150,2011,411
+Chevrolet Silverado,2012,403
+Ram 1500,2013,395
+Toyota Tacoma,2012,159
+Nissan Frontier,2011,261
+Honda Accord,2013,189
+Toyota Camry,2012,178
+Ford Focus,2012,160
+Volkswagen Golf,2013,170

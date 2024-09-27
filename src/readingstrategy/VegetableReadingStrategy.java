@@ -10,7 +10,7 @@ public class VegetableReadingStrategy extends BaseReadingStrategy {
                 new FieldDescription("название", FieldDescription.Type.STRING,
                         new validators.StringLengthValidator(32)),
                 new FieldDescription("вес", FieldDescription.Type.INT,
-                        new validators.IntBoundsValidator(100, 10180)),
+                        new validators.IntBoundsValidator(10, 10180)),
                 new FieldDescription("цвет", FieldDescription.Type.STRING,
                         new validators.StringLengthValidator(32)) };
     }

@@ -13,11 +13,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileReader<T extends Thing> extends BaseReader<T> {
-    private final int count;
 
-    public FileReader(BaseReadingStrategy strategy, int count) {
+    public FileReader(BaseReadingStrategy strategy) {
         super(strategy);
-        this.count = count;
     }
 
     @Override
@@ -25,11 +23,12 @@ public class FileReader<T extends Thing> extends BaseReader<T> {
         List<String> fileStrings = null;
         do {
             try {
-                System.out.println("Введите имя файла (относительно папки пользователя): ");
+                System.out.println("Введите имя файла (относительно папки проекта): ");
                 String relativePath = new Scanner(System.in).next();
-                String absoluteFilePath = System.getProperty("user.home")
+                String absoluteFilePath = System.getProperty("user.dir")
                         + FileSystems.getDefault().getSeparator()
                         + relativePath;
+                System.out.println(absoluteFilePath);
                 fileStrings = readFile(absoluteFilePath);
             } catch (RuntimeException e) {
                 System.out.println("Файл не найден. Попробуйте еще раз");
@@ -38,7 +37,7 @@ public class FileReader<T extends Thing> extends BaseReader<T> {
 
         ArrayList<Thing> collection = new ArrayList<>();
 
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < fileStrings.size(); i++) {
             String[] fields = parsingString(fileStrings.get(i));
             if (!strategy.validate(fields).isValid) {
                 i--;

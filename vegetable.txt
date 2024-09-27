@@ -1,0 +1,14 @@
+Carrot,500,Orange
+Beetroot,12,Red
+Potato,800,Brown
+Onion,300,Yellow
+Garlic,100,White
+Sweet Potato,1500,Yellow
+Parsnip,600,White
+Turnip,400,Purple
+Rutabaga,110,Yellow
+Radish,200,Red
+Celery Root,900,White
+Horseradish,700,White
+Ginger,500,Brown
+Turmeric,300,Yellow
